@@ -1,28 +1,59 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Menu-bar/>
+    Page not available
+    <Footer/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Footer from "@/components/Footer";
+import MenuBar from "@/components/MenuBar";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MenuBar,
+    Footer
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+html, body{
+  height: 100%;
+  background-color: black;
+  font-size: 16px;
+  color: white;
+  margin: 0;
+  font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  overflow: hidden;
+}
+h1{
+  font-size: 30px;
+  margin: 0;
+}
+a:link {
+  color: white;
+  text-decoration: none;
+}
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+a:focus   {
+  color: white;
+  text-decoration: none;
+}
+a:hover   {
+  color: white;
+  text-decoration: none;
+}
+a:active  {
+  color: white;
+  text-decoration: none;
 }
 </style>
