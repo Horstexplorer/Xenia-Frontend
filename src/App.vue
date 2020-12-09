@@ -4,7 +4,7 @@
       <v-app-bar app>
         <v-toolbar-title>Xenia</v-toolbar-title>
         <v-spacer/>
-        <router-link to="">Home</router-link>
+        <router-link to="/">Home</router-link>
         <router-link to="dashboard">Dashboard</router-link>
         <v-spacer/>
         <v-btn right href="https://discord.com/api/oauth2/authorize?client_id=509065864763408385&redirect_uri=https%3A%2F%2Fxenia.netbeacon.de%2Foauth&response_type=code&scope=identify">Login</v-btn>
