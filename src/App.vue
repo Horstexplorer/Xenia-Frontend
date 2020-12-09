@@ -1,59 +1,34 @@
 <template>
   <div id="app">
-    <Menu-bar/>
-    Page not available
-    <Footer/>
+    <v-app>
+      <v-app-bar app>
+        <v-toolbar-title>Xenia</v-toolbar-title>
+        <v-spacer/>
+        <router-link to="">Home</router-link>
+        <router-link to="dashboard">Dashboard</router-link>
+        <v-spacer/>
+        <v-btn right href="https://discord.com/api/oauth2/authorize?client_id=509065864763408385&redirect_uri=https%3A%2F%2Fxenia.netbeacon.de%2Foauth&response_type=code&scope=identify">Login</v-btn>
+      </v-app-bar>
+      <v-main>
+        <router-view></router-view>
+      </v-main>
+    </v-app>
   </div>
 </template>
 
 <script>
 
-import Footer from "@/components/Footer";
-import MenuBar from "@/components/MenuBar";
-
 export default {
-  name: 'App',
-  components: {
-    MenuBar,
-    Footer
-  }
+  name: 'App'
 }
 </script>
 
 <style>
-html, body{
-  height: 100%;
-  background-color: black;
+html, body, #app{
   font-size: 16px;
-  color: white;
   margin: 0;
   font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
-}
-h1{
-  font-size: 30px;
-  margin: 0;
-}
-a:link {
-  color: white;
-  text-decoration: none;
-}
-a:visited {
-  color: white;
-  text-decoration: none;
-}
-a:focus   {
-  color: white;
-  text-decoration: none;
-}
-a:hover   {
-  color: white;
-  text-decoration: none;
-}
-a:active  {
-  color: white;
-  text-decoration: none;
 }
 </style>
