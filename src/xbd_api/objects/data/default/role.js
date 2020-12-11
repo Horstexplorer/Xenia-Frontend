@@ -1,5 +1,5 @@
-import BackendPathArg from "./base/backendpatharg"
-import APIDataObject from "./base/apidataobject";
+import BackendPathArg from "../../base/backendpatharg"
+import APIDataObject from "../../base/apidataobject";
 
 export default class Role extends APIDataObject {
 
