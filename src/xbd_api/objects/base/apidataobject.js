@@ -24,7 +24,7 @@ export default class APIDataObject {
     getAsync(onSuccess, onFailure){
         rawHTTP_GET(this.getBackendPath()).then(
             response => {
-                this.fromJSON = response.body();
+                this.fromJSON = response.body;
                 if(onSuccess != null) {
                     onSuccess(response);
                 }
@@ -43,7 +43,7 @@ export default class APIDataObject {
     createAsync(onSuccess, onFailure){
         rawHTTP_POST(this.getBackendPath(), this.asJSON).then(
             response => {
-                this.fromJSON = response.body();
+                this.fromJSON = response.body;
                 if(onSuccess != null) {
                     onSuccess(response);
                 }
@@ -62,7 +62,7 @@ export default class APIDataObject {
     update(onSuccess, onFailure){
         rawHTTP_PUT(this.getBackendPath(), this.asJSON).then(
             response => {
-                this.fromJSON = response.body();
+                this.fromJSON = response.body;
                 if(onSuccess != null) {
                     onSuccess(response);
                 }
