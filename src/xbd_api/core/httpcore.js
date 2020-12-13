@@ -8,7 +8,7 @@ export const AUTH_TOKEN = {
         return localStorage.getItem("authToken");
     },
     set set(tokenValue) {
-        if (tokenValue === null || tokenValue === undefined || tokenValue.isEmpty()) {
+        if (tokenValue === null || tokenValue === undefined) {
             localStorage.removeItem("authToken");
         } else {
             localStorage.setItem("authToken", tokenValue);
@@ -74,7 +74,7 @@ function getFullRequestURL(path){
 function getOptions() {
     return {
         headers: {
-            Authorization: "Discord "+AUTH_TOKEN.get,
+            Authorization: "Bearer "+AUTH_TOKEN.get,
         },
     };
 }
