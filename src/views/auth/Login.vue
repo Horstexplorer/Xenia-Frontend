@@ -10,7 +10,7 @@ export default {
 
   mounted() {
     if(localStorage.getItem("authToken") == null){
-      window.location.href = "https://discord.com/api/oauth2/authorize?client_id=509065864763408385&redirect_uri=https%3A%2F%2Fxenia.netbeacon.de%2Fauth%2Freturning&response_type=code&scope=identify";
+      window.location.href = "https://backend.xenia.netbeacon.de/auth/discord/prepare";
     }else{
       this.$router.push("/dashboard");
     }
