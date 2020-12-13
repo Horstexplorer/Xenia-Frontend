@@ -25,8 +25,13 @@ export function login(discordToken, state, onSuc, onFail){
     )
     rawHTTP_GET("auth/discord"+query).then(
         response => {
-            AUTH_TOKEN.set = response.authToken;
-            onSuc();
+            if(response.body.authToken !== undefined){
+                AUTH_TOKEN.set = response.body.authToken;
+                onSuc();
+            }else{
+                AUTH_TOKEN.set = null;
+                onFail();
+            }
         },
         () => {
             AUTH_TOKEN.set = null;
