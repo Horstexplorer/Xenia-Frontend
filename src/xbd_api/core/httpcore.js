@@ -23,7 +23,7 @@ export function login(discordToken, state, onSuc, onFail){
     DEFAULT_SCOPES.forEach( scope =>
         query += "&scope="+scope
     )
-    rawHTTP_GET("/auth/discord"+query).then(
+    rawHTTP_GET("auth/discord"+query).then(
         response => {
             AUTH_TOKEN.set = response.authToken;
             onSuc();
