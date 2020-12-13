@@ -8,7 +8,7 @@ export const AUTH_TOKEN = {
         return localStorage.getItem("authToken");
     },
     set set(tokenValue) {
-        if (tokenValue.isEmpty()) {
+        if (tokenValue === null || tokenValue.isEmpty()) {
             localStorage.removeItem("authToken");
         } else {
             localStorage.setItem("authToken", tokenValue);
@@ -19,17 +19,17 @@ export const AUTH_TOKEN = {
 // AUTH //
 
 export function login(discordToken, state, onSuc, onFail){
-    let query = "?"+discordToken;
+    let query = "?code="+discordToken+"&state="+state;
     DEFAULT_SCOPES.forEach( scope =>
-        query += "&"+scope
+        query += "&scope="+scope
     )
     rawHTTP_GET("/auth/discord"+query).then(
         response => {
-            AUTH_TOKEN.set(response.authToken);
+            AUTH_TOKEN.set = response.authToken;
             onSuc();
         },
         () => {
-            AUTH_TOKEN.set();
+            AUTH_TOKEN.set = null;
             onFail();
         }
     );
