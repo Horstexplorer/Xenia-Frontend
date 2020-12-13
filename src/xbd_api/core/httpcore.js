@@ -8,7 +8,7 @@ export const AUTH_TOKEN = {
         return localStorage.getItem("authToken");
     },
     set set(tokenValue) {
-        if (tokenValue === null || tokenValue.isEmpty()) {
+        if (tokenValue === null || tokenValue === undefined || tokenValue.isEmpty()) {
             localStorage.removeItem("authToken");
         } else {
             localStorage.setItem("authToken", tokenValue);
