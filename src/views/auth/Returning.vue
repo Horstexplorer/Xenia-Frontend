@@ -11,7 +11,8 @@ export default {
   name: "Returning",
   mounted() {
     if(this.$route.query.code === undefined || this.$route.query.state === undefined){
-      // some magic if its bad
+      this.$router.replace({query:null});
+      this.$route.push("/");
     }else{
       let authCode = this.$route.query.code;
       let state = this.$route.query.state;
