@@ -1,4 +1,4 @@
-import HTTPCore from "../../core/httpcore"
+import {rawHTTP_GET, rawHTTP_PUT, rawHTTP_POST, rawHTTP_DELETE, AUTH_TOKEN} from "../../core/httpcore"
 import "./backendpatharg"
 
 export default class APIDataObject {
@@ -7,7 +7,7 @@ export default class APIDataObject {
         this.backendPath = [];
     }
 
-    set setBackendPath(backendPathArgs){
+    setBackendPath(backendPathArgs){
         backendPathArgs.forEach( i =>
             this.backendPath.push(i)
         )
@@ -22,16 +22,16 @@ export default class APIDataObject {
     }
 
     getAsync(onSuccess, onFailure){
-        HTTPCore.rawHTTP_GET(this.getBackendPath()).then(
+        rawHTTP_GET(this.getBackendPath()).then(
             response => {
-                this.fromJSON(response.body());
+                this.fromJSON = response.body();
                 if(onSuccess != null) {
                     onSuccess(response);
                 }
             }, response => {
                 if(response.code === 401){
                     // token failure
-                    HTTPCore.AUTH_TOKEN.set();
+                    AUTH_TOKEN.set = null;
                 }
                 if(onFailure != null){
                     onFailure(response);
@@ -41,16 +41,16 @@ export default class APIDataObject {
     }
 
     createAsync(onSuccess, onFailure){
-        HTTPCore.rawHTTP_POST(this.getBackendPath(), this.asJSON).then(
+        rawHTTP_POST(this.getBackendPath(), this.asJSON).then(
             response => {
-                this.fromJSON(response.body());
+                this.fromJSON = response.body();
                 if(onSuccess != null) {
                     onSuccess(response);
                 }
             }, response => {
                 if(response.code === 401){
                     // token failure
-                    HTTPCore.AUTH_TOKEN.set();
+                    AUTH_TOKEN.set = null;
                 }
                 if(onFailure != null){
                     onFailure(response);
@@ -60,16 +60,16 @@ export default class APIDataObject {
     }
 
     update(onSuccess, onFailure){
-        HTTPCore.rawHTTP_PUT(this.getBackendPath(), this.asJSON).then(
+        rawHTTP_PUT(this.getBackendPath(), this.asJSON).then(
             response => {
-                this.fromJSON(response.body());
+                this.fromJSON = response.body();
                 if(onSuccess != null) {
                     onSuccess(response);
                 }
             }, response => {
                 if(response.code === 401){
                     // token failure
-                    HTTPCore.AUTH_TOKEN.set();
+                    AUTH_TOKEN.set = null;
                 }
                 if(onFailure != null){
                     onFailure(response);
@@ -79,7 +79,7 @@ export default class APIDataObject {
     }
 
     delete(onSuccess, onFailure){
-        HTTPCore.rawHTTP_DELETE(this.getBackendPath()).then(
+        rawHTTP_DELETE(this.getBackendPath()).then(
             response => {
                 if(onSuccess != null) {
                     onSuccess(response);
@@ -87,7 +87,7 @@ export default class APIDataObject {
             }, response => {
                 if(response.code === 401){
                     // token failure
-                    HTTPCore.AUTH_TOKEN.set();
+                    AUTH_TOKEN.set = null;
                 }
                 if(onFailure != null){
                     onFailure(response);
