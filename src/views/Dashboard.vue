@@ -1,12 +1,18 @@
 <template>
   <div>
-    Unavailable
+    Dashboard
   </div>
 </template>
 
 <script>
 export default {
-  name: "Dashboard"
+  name: "Dashboard",
+
+  mounted() {
+    if(localStorage.getItem("authToken") == null){
+      this.$router.push("/");
+    }
+  }
 }
 </script>
 
