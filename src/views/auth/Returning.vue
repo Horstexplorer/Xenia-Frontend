@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import {login} from "@/xbd_api/core/httpcore"
+import API from "@/xbd_api/httpcore"
 
 export default {
   name: "Returning",
@@ -18,7 +18,7 @@ export default {
       let state = this.$route.query.state;
       this.$router.replace({query:null});
       // send
-      login(authCode, state,
+      API.login(authCode, state,
           () => this.$router.push("/dashboard"),
           () => this.$router.push("/")
       );

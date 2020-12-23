@@ -5,11 +5,13 @@
 </template>
 
 <script>
+
+import API from "@/xbd_api/httpcore"
+
 export default {
   name: "Logout",
   mounted() {
-    localStorage.removeItem("authToken");
-    this.$router.push("/");
+    API.logout(()=> this.$router.push("/"));
   }
 }
 </script>

@@ -1,8 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home";
+
 import Dashboard from "@/views/Dashboard";
 
+import Auth from "@/views/Auth";
 import Login from "@/views/auth/Login";
 import Logout from "@/views/auth/Logout";
 import Returning from "@/views/auth/Returning";
@@ -25,25 +27,34 @@ const routes = [
         },
     },
     {
-        path: "/auth/returning",
-        component: Returning,
+        path: "/auth",
+        component: Auth,
         meta: {
-            title: "Login...",
+            title: "Auth",
         },
-    },
-    {
-        path: "/auth/login",
-        component: Login,
-        meta: {
-            title: "Login",
-        },
-    },
-    {
-        path: "/auth/logout",
-        component: Logout,
-        meta: {
-            title: "Logout",
-        },
+        children: [
+            {
+                path: "returning",
+                component: Returning,
+                meta: {
+                    title: "Login...",
+                },
+            },
+            {
+                path: "login",
+                component: Login,
+                meta: {
+                    title: "Login",
+                },
+            },
+            {
+                path: "logout",
+                component: Logout,
+                meta: {
+                    title: "Logout",
+                },
+            },
+        ]
     },
     ]
 
