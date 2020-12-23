@@ -21,7 +21,7 @@ export default {
 
   mounted() {
     if(localStorage.getItem("authToken") == null){
-      //this.$router.push("/");
+      this.$router.push("/");
     }
     // load data for guilds
     API.rawHTTP_GET("/data/frontend/meta/guilds").then(

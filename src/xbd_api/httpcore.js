@@ -2,7 +2,7 @@ import Vue from "vue";
 
 /// STATICS
 const DEFAULT_SCOPES = ["identify"]
-const BACKEND_URL = "https://backend.xenia.netbeacon.de/"
+const BACKEND_URL = "https://backend.xenia.netbeacon.de"
 
 const AUTH_TOKEN = {
     get isSet(){
@@ -27,7 +27,7 @@ export function login(discordToken, state, onSuc = null, onFail = null){
     DEFAULT_SCOPES.forEach( scope =>
         query += "&scope="+scope
     )
-    rawHTTP_GET("auth/discord"+query).then(
+    rawHTTP_GET("/auth/discord"+query).then(
         response => {
             if(response.body.authToken !== undefined){
                 AUTH_TOKEN.set = response.body.authToken;
