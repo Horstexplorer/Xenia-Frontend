@@ -6,20 +6,20 @@
     <v-list shaped nav>
       <v-list-item
         v-for="guild in guilds"
-        :key="guild.id"
-        :to="`dashboard/guilds/${guild.id}`"
+        :key="guild.guildId"
+        :to="`dashboard/guilds/${guild.guildId}`"
         exact
       >
         <v-list-item-avatar>
           <guild-icon
-              :icon="guild.icon"
-              :alt="'${guild.name} guild'"
-              :text="guild.name"
+              :icon="guild.iconUrl"
+              :alt="'${guild.guildName} guild'"
+              :text="guild.guildName"
               :size="40"
           />
         </v-list-item-avatar>
         <v-list-item-content>
-          <v-list-item-title>{{ guild.name }}</v-list-item-title>
+          <v-list-item-title>{{ guild.guildName }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
