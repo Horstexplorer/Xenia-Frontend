@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import {login} from "@/xbd_api/core/httpcore"
+import {login} from "@/xbd_api/httpcore"
 
 export default {
   name: "Returning",
