@@ -20,7 +20,7 @@ export default {
   },
 
   mounted() {
-    if(localStorage.getItem("authToken") == null){
+    if(!API.AUTH_TOKEN.isSet){
       this.$router.push("/");
     }
     // load data for guilds
