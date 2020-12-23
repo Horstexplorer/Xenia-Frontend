@@ -5,10 +5,8 @@
         <v-toolbar-title>Xenia</v-toolbar-title>
         <v-spacer/>
 
-
-        <v-btn right to="/auth/login" v-if="localStorage.getItem('authToken') == null">Login</v-btn>
+        <v-btn right to="/auth/login" v-if=isLoggedIn>Login</v-btn>
         <v-btn right to="/auth/logout" v-else>Logout</v-btn>
-
 
       </v-app-bar>
       <v-main>
@@ -19,9 +17,16 @@
 </template>
 
 <script>
+import API from "@/xbd_api/httpcore"
 
 export default {
-  name: 'App'
+  name: 'App',
+
+  computed: {
+    isLoggedIn(){
+      return API.AUTH_TOKEN.isSet;
+    }
+  }
 }
 </script>
 
