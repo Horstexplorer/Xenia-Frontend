@@ -18,7 +18,7 @@ export const AUTH_TOKEN = {
 
 // AUTH //
 
-export function login(discordToken, state, onSuc, onFail){
+export function login(discordToken, state, onSuc = null, onFail = null){
     let query = "?code="+discordToken+"&state="+state;
     DEFAULT_SCOPES.forEach( scope =>
         query += "&scope="+scope
@@ -27,25 +27,56 @@ export function login(discordToken, state, onSuc, onFail){
         response => {
             if(response.body.authToken !== undefined){
                 AUTH_TOKEN.set = response.body.authToken;
-                onSuc();
+                if(onSuc !== null){
+                    onSuc();
+                }
             }else{
                 AUTH_TOKEN.set = null;
-                onFail();
+                if(onFail !== null){
+                    onFail();
+                }
             }
         },
         () => {
             AUTH_TOKEN.set = null;
-            onFail();
+            if(onFail !== null){
+                onFail();
+            }
         }
     );
 }
 
-export function renew(){
-
+export function renew(onSuc = null, onFail = null){
+    rawHTTP_GET("auth/discord/renew").then(
+        () => {
+            if(onSuc !== null){
+                onSuc();
+            }
+        },
+        () => {
+            AUTH_TOKEN.set = null;
+            if(onFail !== null){
+                onFail();
+            }
+        }
+    );
 }
 
-export function logout(){
-
+export function logout(onSuc = null){
+    rawHTTP_GET("auth/discord/revoke").then(
+        () => {
+            AUTH_TOKEN.set = null;
+            if(onSuc !== null){
+                onSuc();
+            }
+        },
+        () => {
+            AUTH_TOKEN.set = null;
+            if(onSuc !== null){
+                onSuc();
+            }
+        }
+    );
 }
 
 // HTTP //
