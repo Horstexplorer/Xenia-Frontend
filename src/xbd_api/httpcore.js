@@ -87,44 +87,80 @@ export function logout(onSuc = null){
 
 export function rawHTTP_GET(path, options = getOptions()){
     return Vue.http.get(getFullRequestURL(path), options).then(
-        () => {},
-        response => {
-            if(response.code === 401){
+        resolve => {
+            // eslint-disable-next-line no-unused-vars
+            return new Promise(((resolveI, rejectI) => {
+                resolveI(resolve);
+            }))
+        },
+        reject => {
+            if(reject.code === 401){
                 AUTH_TOKEN.set(null);
             }
+            // eslint-disable-next-line no-unused-vars
+            return new Promise(((resolveI, rejectI) => {
+                rejectI(reject);
+            }))
         }
     );
 }
 
 export function rawHTTP_PUT(path, body, options = getOptions()){
     return Vue.http.put(getFullRequestURL(path), body, options).then(
-        () => {},
-        response => {
-            if(response.code === 401){
+        resolve => {
+            // eslint-disable-next-line no-unused-vars
+            return new Promise(((resolveI, rejectI) => {
+                resolveI(resolve);
+            }))
+        },
+        reject => {
+            if(reject.code === 401){
                 AUTH_TOKEN.set(null);
             }
+            // eslint-disable-next-line no-unused-vars
+            return new Promise(((resolveI, rejectI) => {
+                rejectI(reject);
+            }))
         }
     );
 }
 
 export function rawHTTP_POST(path, body, options = getOptions()){
     return Vue.http.post(getFullRequestURL(path), body, options).then(
-        () => {},
-        response => {
-            if(response.code === 401){
+        resolve => {
+            // eslint-disable-next-line no-unused-vars
+            return new Promise(((resolveI, rejectI) => {
+                resolveI(resolve);
+            }))
+        },
+        reject => {
+            if(reject.code === 401){
                 AUTH_TOKEN.set(null);
             }
+            // eslint-disable-next-line no-unused-vars
+            return new Promise(((resolveI, rejectI) => {
+                rejectI(reject);
+            }))
         }
     );
 }
 
 export function rawHTTP_DELETE(path, options = getOptions()){
     return Vue.http.delete(getFullRequestURL(path), options).then(
-        () => {},
-        response => {
-            if(response.code === 401){
+        resolve => {
+            // eslint-disable-next-line no-unused-vars
+            return new Promise(((resolveI, rejectI) => {
+                resolveI(resolve);
+            }))
+        },
+        reject => {
+            if(reject.code === 401){
                 AUTH_TOKEN.set(null);
             }
+            // eslint-disable-next-line no-unused-vars
+            return new Promise(((resolveI, rejectI) => {
+                rejectI(reject);
+            }))
         }
     );
 }
