@@ -3,7 +3,8 @@ import Vue from "vue";
 /// STATICS
 const DEFAULT_SCOPES = ["identify"]
 const BACKEND_URL = "https://backend.xenia.netbeacon.de/"
-export const AUTH_TOKEN = {
+
+const AUTH_TOKEN = {
     get get() {
         return localStorage.getItem("authToken");
     },
@@ -82,19 +83,47 @@ export function logout(onSuc = null){
 // HTTP //
 
 export function rawHTTP_GET(path, options = getOptions()){
-    return Vue.http.get(getFullRequestURL(path), options);
+    return Vue.http.get(getFullRequestURL(path), options).then(
+        () => {},
+        response => {
+            if(response.code === 401){
+                AUTH_TOKEN.set(null);
+            }
+        }
+    );
 }
 
 export function rawHTTP_PUT(path, body, options = getOptions()){
-    return Vue.http.put(getFullRequestURL(path), body, options);
+    return Vue.http.put(getFullRequestURL(path), body, options).then(
+        () => {},
+        response => {
+            if(response.code === 401){
+                AUTH_TOKEN.set(null);
+            }
+        }
+    );
 }
 
 export function rawHTTP_POST(path, body, options = getOptions()){
-    return Vue.http.post(getFullRequestURL(path), body, options);
+    return Vue.http.post(getFullRequestURL(path), body, options).then(
+        () => {},
+        response => {
+            if(response.code === 401){
+                AUTH_TOKEN.set(null);
+            }
+        }
+    );
 }
 
 export function rawHTTP_DELETE(path, options = getOptions()){
-    return Vue.http.delete(getFullRequestURL(path), options);
+    return Vue.http.delete(getFullRequestURL(path), options).then(
+        () => {},
+        response => {
+            if(response.code === 401){
+                AUTH_TOKEN.set(null);
+            }
+        }
+    );
 }
 
 
@@ -108,4 +137,10 @@ function getOptions() {
             Authorization: "Bearer "+AUTH_TOKEN.get,
         },
     };
+}
+
+export default {
+    AUTH_TOKEN,
+    login, renew, logout,
+    rawHTTP_GET, rawHTTP_PUT, rawHTTP_POST, rawHTTP_DELETE
 }

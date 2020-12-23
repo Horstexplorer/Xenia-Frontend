@@ -6,7 +6,7 @@
 </template>
 
 <script>
-
+import API from "@/xbd_api/httpcore"
 import GuildListNavigationDrawer from "@/components/GuildListNavigationDrawer";
 
 export default {
@@ -23,8 +23,12 @@ export default {
     if(localStorage.getItem("authToken") == null){
       //this.$router.push("/");
     }
-    // LOAD GUILDS FROM BACKEND
-
+    // load data for guilds
+    API.rawHTTP_GET("/data/frontend/meta/guilds").then(
+        response => {
+          this.guilds = response.body.guilds;
+        }, () => {}
+    )
   }
 }
 </script>
