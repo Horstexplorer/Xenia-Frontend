@@ -5,7 +5,7 @@
     <div class="hero-image">
       <div class="hero-text">
         <h1>I am Xenia</h1>
-        <p>Obviously</p>
+        <p>Here to improve your Discord</p>
         <p>&nbsp; </p>
         <a href="https://discord.com/oauth2/authorize?client_id=509065864763408385&permissions=388160&scope=bot"> Add to Discord </a>
       </div>
@@ -31,7 +31,6 @@
         <td>
           <div class="innertable">
             <a>Unknown</a>
-            <!-- Script here -->
           </div>
         </td>
         <td>
@@ -47,7 +46,12 @@
 
     <div class="description">
       <h3>Features</h3>
-      <a>None</a>
+      <pre>
+        - Reminders
+        - Twitch stream notification
+        - Hastebin upload
+        - Message logging
+      </pre>
     </div>
   </div>
 </template>
@@ -60,31 +64,15 @@ export default {
 
 <style scoped>
 .home{
-  height: 100%;
+  height: 100vh;
+  min-height: 100vh;
   background-color: black;
   font-size: 21px;
   color: white;
   margin: 0;
   font-family: "Lato", sans-serif;
-  overflow: hidden;
 }
-a:link {
-  color: white;
-  text-decoration: none;
-}
-a:visited {
-  color: white;
-  text-decoration: none;
-}
-a:focus   {
-  color: white;
-  text-decoration: none;
-}
-a:hover   {
-  color: white;
-  text-decoration: none;
-}
-a:active  {
+a:link, a:visited, a:focus, a:hover, a:active {
   color: white;
   text-decoration: none;
 }
@@ -131,7 +119,6 @@ a:active  {
 .description h3{
   text-align: center;
 }
-
 a.link{
   padding: 6px;
   border-style: solid;
@@ -148,8 +135,5 @@ a.link{
 }
 .innertable{
   min-width: 100%;
-}
-::-webkit-scrollbar {
-  display: none;
 }
 </style>
