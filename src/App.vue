@@ -3,7 +3,9 @@
     <v-app>
       <v-app-bar app>
         <v-toolbar-title>Xenia</v-toolbar-title>
-        <v-spacer xs />
+        <v-spacer/>
+        <v-btn small text elevation="0" to="/">Home</v-btn>
+        <v-btn small text elevation="0" to="/dashboard">Dashboard</v-btn>
         <v-btn small text elevation="0" to="/processing">Data Processing</v-btn>
         <v-btn small text elevation="0" to="/report">Report Content</v-btn>
         <v-btn small text elevation="0" to="/contact">Contact</v-btn>
