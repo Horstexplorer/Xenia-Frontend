@@ -2,8 +2,8 @@
   <div>
     <pre>
       <h1>Contact</h1>
-        <b>Discord</b>
-          Horstexplorer#2131
+      <b>Discord</b>
+        Horstexplorer#2131
     </pre>
   </div>
 </template>
