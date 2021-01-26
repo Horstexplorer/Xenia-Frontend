@@ -3,6 +3,10 @@
     <v-app>
       <v-app-bar app>
         <v-toolbar-title>Xenia</v-toolbar-title>
+        <v-spacer xs />
+        <v-btn small text elevation="0" to="/processing">Data Processing</v-btn>
+        <v-btn small text elevation="0" to="/report">Report Content</v-btn>
+        <v-btn small text elevation="0" to="/contact">Contact</v-btn>
         <v-spacer/>
 
         <v-btn right to="/auth/login" v-if=isLoggedIn>Login</v-btn>
