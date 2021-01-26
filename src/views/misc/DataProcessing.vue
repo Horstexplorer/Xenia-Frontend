@@ -20,7 +20,7 @@
       The data collected might only be used to sustain and further improve the service provided by Xenia.
 
       <h2>Concerns or Exceptional Deletion Requests</h2>
-      If there are any other concerns relating to privacy or you have exceptional reason to request a deletion, please message Horstexplorer#2131 on Discord.
+      If there are any other concerns relating to privacy or you have exceptional reason to request a deletion, please contact us.
     </pre>
   </div>
 </template>
