@@ -8,6 +8,9 @@ import Auth from "@/views/Auth";
 import Login from "@/views/auth/Login";
 import Logout from "@/views/auth/Logout";
 import Returning from "@/views/auth/Returning";
+import DataProcessing from "@/views/misc/DataProcessing";
+import Contact from "@/views/misc/Contact";
+import Report from "@/views/misc/Report";
 
 Vue.use(VueRouter);
 
@@ -55,6 +58,27 @@ const routes = [
                 },
             },
         ]
+    },
+    {
+        path: "/processing",
+        component: DataProcessing,
+        meta: {
+            title: "Data Processing",
+        },
+    },
+    {
+        path: "/report",
+        component: Report,
+        meta: {
+            title: "Report",
+        },
+    },
+    {
+        path: "/contact",
+        component: Contact,
+        meta: {
+            title: "Contact",
+        },
     },
     ]
 
