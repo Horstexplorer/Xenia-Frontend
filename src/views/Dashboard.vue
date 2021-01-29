@@ -24,7 +24,7 @@ export default {
       this.$router.push("/");
     }
     // load data for guilds
-    API.rawHTTP_GET("/data/frontend/meta/guilds").then(
+    API.rawHTTP_GET("/data/client/frontend/meta/guilds").then(
         response => {
           this.guilds = response.body.guilds;
         }, () => {}
