@@ -5,7 +5,7 @@
     <div class="hero-image">
       <div class="hero-text">
         <h1>I am Xenia</h1>
-        <p>Here to improve your Discord</p>
+        <p>Obviously</p>
         <p>&nbsp; </p>
         <a href="https://discord.com/oauth2/authorize?client_id=509065864763408385&permissions=388160&scope=bot%20applications.commands"> Add to Discord </a>
       </div>
