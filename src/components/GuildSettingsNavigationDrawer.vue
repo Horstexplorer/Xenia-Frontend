@@ -1,6 +1,6 @@
 <template>
   <v-navigation-drawer
-      v-model="drawer"
+      :value="true"
       clipped
   >
     <v-list shaped nav>
