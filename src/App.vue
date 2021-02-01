@@ -32,6 +32,10 @@ export default {
     isLoggedIn(){
       return API.AUTH_TOKEN.isSet;
     }
+  },
+
+  mounted() {
+    window.addEventListener("")
   }
 }
 </script>
