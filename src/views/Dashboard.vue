@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="dashboard">
     <GuildListNavigationDrawer :guilds="guilds"/>
     <router-view></router-view>
   </div>
@@ -22,6 +22,7 @@ export default {
   mounted() {
     if(!API.AUTH_TOKEN.isSet){
       this.$router.push("/");
+      return;
     }
     // load data for guilds
     API.rawHTTP_GET("/data/client/frontend/meta/guilds").then(
@@ -34,5 +35,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .dashboard{
+    display:flex;
+  }
 </style>

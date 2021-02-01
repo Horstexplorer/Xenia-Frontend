@@ -6,7 +6,7 @@ const BACKEND_URL = "https://backend.xenia.netbeacon.de"
 
 const AUTH_TOKEN = {
     get isSet(){
-        return !(localStorage.getItem("authToken") === undefined);
+        return localStorage.getItem("authToken") !== null && localStorage.getItem("authToken") !== undefined;
     },
     get get() {
         return localStorage.getItem("authToken");
