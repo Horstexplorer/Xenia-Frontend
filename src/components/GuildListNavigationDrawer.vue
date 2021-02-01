@@ -7,7 +7,7 @@
       <v-list-item
         v-for="guild in guilds"
         :key="guild.guildId"
-        :to="`dashboard/guilds/${guild.guildId}`"
+        :to="`/dashboard/guilds/${guild.guildId}`"
         exact
       >
         <v-list-item-avatar>
