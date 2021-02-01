@@ -36,7 +36,12 @@ export default {
       type: Array,
     },
   },
-  components: {GuildIcon}
+  components: {GuildIcon},
+  data(){
+    return{
+      drawer: false
+    };
+  }
 }
 </script>
 

@@ -11,7 +11,7 @@
         <v-btn small text elevation="0" to="/contact">Contact</v-btn>
         <v-spacer/>
 
-        <v-btn right to="/auth/login" v-if=isLoggedIn>Login</v-btn>
+        <v-btn right to="/auth/login" v-if=!isLoggedIn>Login</v-btn>
         <v-btn right to="/auth/logout" v-else>Logout</v-btn>
 
       </v-app-bar>

@@ -11,6 +11,7 @@ import Returning from "@/views/auth/Returning";
 import DataProcessing from "@/views/misc/DataProcessing";
 import Contact from "@/views/misc/Contact";
 import Report from "@/views/misc/Report";
+import GuildDashboard from "@/views/dashboard/GuildDashboard";
 
 Vue.use(VueRouter);
 
@@ -28,6 +29,15 @@ const routes = [
         meta: {
             title: "Dashboard",
         },
+        children: [
+            {
+                path: "guilds/:guildId",
+                component: GuildDashboard,
+                meta: {
+                    title: "Dashboard",
+                },
+            },
+        ]
     },
     {
         path: "/auth",
