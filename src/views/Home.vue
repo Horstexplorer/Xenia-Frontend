@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <div class="empty"></div>
-
     <div class="hero-image">
       <div class="hero-text">
         <h1>I am Xenia</h1>
@@ -10,8 +8,6 @@
         <a href="https://discord.com/oauth2/authorize?client_id=509065864763408385&permissions=388160&scope=bot%20applications.commands"> Add to Discord </a>
       </div>
     </div>
-
-    <div class="emptysmall"></div>
 
     <table class="table">
       <tbody>
@@ -64,39 +60,27 @@ export default {
 
 <style scoped>
 .home{
-  height: 100vh;
-  min-height: 100vh;
-  background-color: black;
+  height: 100%;
   font-size: 21px;
   color: white;
-  padding: 0;
-  margin: 0;
   font-family: "Lato", sans-serif;
 }
 a:link, a:visited, a:focus, a:hover, a:active {
   color: white;
   text-decoration: none;
 }
-.empty{
-  height: 10%;
-}
-.emptysmall{
-  height: 5%;
-}
 .hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/background.jpg");
   height: 70%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
 }
 .hero-text {
   text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: white;
 }
 .hero-text a{
@@ -114,8 +98,8 @@ a:link, a:visited, a:focus, a:hover, a:active {
   color: rgba(144, 255, 96, 1);
 }
 .description{
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 .description h3{
   text-align: center;
