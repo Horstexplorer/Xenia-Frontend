@@ -22,6 +22,7 @@ export default {
   mounted() {
     if(!API.AUTH_TOKEN.isSet){
       this.$router.push("/");
+      this.$emit("notify", "warning", "You need to be logged in to view this page");
       return;
     }
     // load data for guilds
