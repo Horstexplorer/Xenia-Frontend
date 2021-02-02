@@ -69,6 +69,7 @@ export default {
   background-color: black;
   font-size: 21px;
   color: white;
+  padding: 0;
   margin: 0;
   font-family: "Lato", sans-serif;
 }

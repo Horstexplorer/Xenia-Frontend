@@ -16,7 +16,11 @@
 
       </v-app-bar>
       <v-main>
-        <router-view></router-view>
+        <div class="alerts" v-for="(alert, i) in alerts" :key="i">
+          <v-alert dense dismissible :type=alert.level >{{alert.message}}</v-alert>
+        </div>
+
+        <router-view class="content"></router-view>
       </v-main>
     </v-app>
   </div>
@@ -28,21 +32,40 @@ import API from "@/xbd_api/httpcore"
 export default {
   name: 'App',
 
+  data(){
+    return{
+      alerts:[]
+    }
+  },
+
   computed: {
     isLoggedIn(){
       return API.AUTH_TOKEN.isSet;
     }
   },
 
+  methods:{
+    addAlert(level, message){
+      this.alerts.push({
+        level: level,
+        message: message
+      })
+    }
+  },
+
   mounted() {
-    window.addEventListener("")
+
   }
 }
 </script>
 
 <style>
 html, body, #app{
+  min-height: 100%;
+  min-width: 100%;
+  overflow-y: auto !important;
   font-size: 16px;
+  padding: 0;
   margin: 0;
   font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
