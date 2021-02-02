@@ -16,11 +16,10 @@
 
       </v-app-bar>
       <v-main>
-        <div class="alerts" v-for="(alert, i) in alerts" :key="i">
-          <v-alert dense dismissible :type=alert.level >{{alert.message}}</v-alert>
-        </div>
-
-        <router-view class="content"></router-view>
+        <v-alert v-for="(alert, i) in alerts" :key="i" class="alerts" dense dismissible :type=alert.level>
+          {{alert.message}}
+        </v-alert>
+        <router-view class="content" @notify="addAlert"></router-view>
       </v-main>
     </v-app>
   </div>
@@ -63,12 +62,17 @@ export default {
 html, body, #app{
   min-height: 100%;
   min-width: 100%;
-  overflow-y: auto !important;
   font-size: 16px;
   padding: 0;
   margin: 0;
   font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.alerts{
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
 }
 </style>
