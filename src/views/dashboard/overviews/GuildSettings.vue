@@ -7,9 +7,6 @@
 <script>
 export default {
   name: "GuildSettings",
-  mounted() {
-    this.$emit("notify", "warning", "You need to be logged in to view this page");
-  }
 }
 </script>
 
