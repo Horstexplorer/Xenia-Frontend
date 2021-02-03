@@ -15,7 +15,7 @@
           <v-list-item-avatar>
             <icon
                 :icon="guild.iconUrl"
-                :alt="'${guild.guildName} guild'"
+                :alt="`${guild.guildName} guild`"
                 :text="guild.guildName"
                 :size="40"
             />
