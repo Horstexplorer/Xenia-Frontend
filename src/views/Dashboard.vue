@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
-    <GuildListNavigationDrawer :guilds="guilds"/>
-    <router-view @notify="addAlert"></router-view>
+    <guild-list-navigation-drawer v-model="drawer" :guilds="guilds" />
+    <router-view @notify="addAlert" />
   </div>
 </template>
 
@@ -11,17 +11,21 @@ import GuildListNavigationDrawer from "@/components/GuildListNavigationDrawer";
 
 export default {
   name: "Dashboard",
-  components: {GuildListNavigationDrawer},
-  methods:{
-    addAlert(level, message){
-      this.$emit("notify", level, message)
+
+  props: {
+    value: {
+      required: true
     }
   },
+
+  components: {GuildListNavigationDrawer},
+
   data(){
     return{
       guilds:[]
     }
   },
+
   mounted() {
     if(!API.AUTH_TOKEN.isSet){
       this.$router.push("/");
@@ -34,12 +38,30 @@ export default {
           this.guilds = response.body.guilds;
         }, () => {}
     )
-  }
+  },
+
+  computed: {
+    drawer: {
+      get() {
+        return this.value;
+      },
+      set(value) {
+        this.$emit("input", value);
+      },
+    },
+  },
+
+  methods:{
+    addAlert(level, message){
+      this.$emit("notify", level, message)
+    }
+  },
+
 }
 </script>
 
 <style scoped>
-  .dashboard{
-    display:flex;
-  }
+.dashboard{
+  display:flex;
+}
 </style>

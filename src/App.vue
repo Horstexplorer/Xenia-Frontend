@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app>
+      <v-app-bar-nav-icon v-if="isDashboard" @click="toggleDrawer" />
       <v-toolbar-title>Xenia</v-toolbar-title>
       <v-spacer/>
       <v-btn small text elevation="0" to="/">Home</v-btn>
@@ -20,7 +21,7 @@
           {{alert.message}}
         </v-alert>
       </div>
-      <router-view class="content" @notify="addAlert"></router-view>
+      <router-view v-model="drawer" class="content" @notify="addAlert"></router-view>
     </v-main>
   </v-app>
 </template>
@@ -30,24 +31,35 @@ import API from "@/xbd_api/httpcore"
 
 export default {
   name: 'App',
+
+  data(){
+    return{
+      alerts: [],
+      drawer: null
+    }
+  },
+
+  computed: {
+    isLoggedIn(){
+      return API.AUTH_TOKEN.isSet;
+    },
+    isDashboard(){
+      return this.$route.path.includes("/dashboard")
+    },
+  },
+
   methods:{
     addAlert(level, message){
       this.alerts.push({
         level: level,
         message: message
       })
+    },
+    toggleDrawer(){
+      this.drawer = !this.drawer
     }
   },
-  computed: {
-    isLoggedIn(){
-      return API.AUTH_TOKEN.isSet;
-    }
-  },
-  data(){
-    return{
-      alerts: []
-    }
-  },
+
 }
 </script>
 
@@ -61,7 +73,7 @@ html, body, #app{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
-
+  color: white;
 }
 .alerts{
   position: absolute;
@@ -72,11 +84,5 @@ html, body, #app{
 .alert{
   margin-top: 0.5% !important;
   margin-bottom: 0.5% !important;
-}
-
-.alerts{
-  position: absolute;
-  z-index: 1000;
-  width: 100%;
 }
 </style>

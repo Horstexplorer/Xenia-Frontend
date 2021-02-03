@@ -11,10 +11,9 @@ import Returning from "@/views/auth/Returning";
 import DataProcessing from "@/views/misc/DataProcessing";
 import Contact from "@/views/misc/Contact";
 import Report from "@/views/misc/Report";
-import GuildDashboard from "@/views/dashboard/GuildDashboard";
-import GuildSettings from "@/views/dashboard/overviews/GuildSettings";
-import ChannelSettings from "@/views/dashboard/overviews/ChannelSettings";
-import VirtualRoleSettings from "@/views/dashboard/overviews/VirtualRoleSettings";
+import GuildSettings from "@/views/dashboards/GuildSettings";
+import ChannelSettings from "@/views/dashboards/ChannelSettings";
+import VirtualRoleSettings from "@/views/dashboards/VirtualRoleSettings";
 
 Vue.use(VueRouter);
 
@@ -34,35 +33,26 @@ const routes = [
         },
         children: [
             {
-                path: "guilds/:guildId",
-                component: GuildDashboard,
+                path: "guilds/:guildId/guildsettings",
+                component: GuildSettings,
                 meta: {
                     title: "Dashboard",
                 },
-                children: [
-                    {
-                        path: "guildsettings",
-                        component: GuildSettings,
-                        meta: {
-                            title: "Dashboard",
-                        },
-                    },
-                    {
-                        path: "channelsettings",
-                        component: ChannelSettings,
-                        meta: {
-                            title: "Dashboard",
-                        },
-                    },
-                    {
-                        path: "virtualrolesettings",
-                        component: VirtualRoleSettings,
-                        meta: {
-                            title: "Dashboard",
-                        },
-                    }
-                ]
             },
+            {
+                path: "guilds/:guildId/channelsettings",
+                component: ChannelSettings,
+                meta: {
+                    title: "Dashboard",
+                },
+            },
+            {
+                path: "guilds/:guildId/virtualrolesettings",
+                component: VirtualRoleSettings,
+                meta: {
+                    title: "Dashboard",
+                },
+            }
         ]
     },
     {
