@@ -1,15 +1,13 @@
 <template>
-  <div>
-    <v-avatar color="icon == null ? 'grey' : undefined">
-      <span v-if="hasNoIcon" :style="{ 'font-size': `${size / 2.5}px` }">{{ shortText }}</span>
-      <v-img v-else :src="icon" :alt="alt"/>
-    </v-avatar>
-  </div>
+  <v-avatar color="icon == null ? 'grey' : undefined">
+    <span v-if="hasNoIcon" :style="{ 'font-size': `${size / 2.5}px` }">{{ shortText }}</span>
+    <v-img v-else :src="icon" :alt="alt"/>
+  </v-avatar>
 </template>
 
 <script>
 export default {
-  name: "GuildIcon",
+  name: "Icon",
   props: {
     icon: {
       type: String,
