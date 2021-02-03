@@ -2,6 +2,7 @@
   <v-navigation-drawer
       v-model="drawer"
       clipped
+      app
   >
     <v-list shaped nav>
       <v-list-group
