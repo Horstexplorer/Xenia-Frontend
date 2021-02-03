@@ -7,9 +7,6 @@
 <script>
 export default {
   name: "ChannelSettings",
-  mounted() {
-    this.$emit("notify", "warning", "You need to be logged in to view this page");
-  }
 }
 </script>
 
