@@ -19,8 +19,8 @@ export default {
       this.$router.replace({query:null});
       // send
       API.login(authCode, state,
-          () => this.$router.push("/dashboard"),
-          () => this.$router.push("/")
+          () => window.location.href = "/dashboard",
+          () => window.location.href = "/"
       );
     }
   }
