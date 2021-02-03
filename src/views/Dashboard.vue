@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <GuildListNavigationDrawer :guilds="guilds"/>
-    <router-view></router-view>
+    <router-view @notify="addAlert"></router-view>
   </div>
 </template>
 
@@ -12,13 +12,16 @@ import GuildListNavigationDrawer from "@/components/GuildListNavigationDrawer";
 export default {
   name: "Dashboard",
   components: {GuildListNavigationDrawer},
-
+  methods:{
+    addAlert(level, message){
+      this.$emit("notify", level, message)
+    }
+  },
   data(){
     return{
       guilds:[]
     }
   },
-
   mounted() {
     if(!API.AUTH_TOKEN.isSet){
       this.$router.push("/");

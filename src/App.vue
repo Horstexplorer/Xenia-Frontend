@@ -30,19 +30,6 @@ import API from "@/xbd_api/httpcore"
 
 export default {
   name: 'App',
-
-  data(){
-    return{
-      alerts: []
-    }
-  },
-
-  computed: {
-    isLoggedIn(){
-      return API.AUTH_TOKEN.isSet;
-    }
-  },
-
   methods:{
     addAlert(level, message){
       this.alerts.push({
@@ -51,7 +38,16 @@ export default {
       })
     }
   },
-
+  computed: {
+    isLoggedIn(){
+      return API.AUTH_TOKEN.isSet;
+    }
+  },
+  data(){
+    return{
+      alerts: []
+    }
+  },
 }
 </script>
 
@@ -74,7 +70,8 @@ html, body, #app{
 }
 
 .alert{
-  margin-bottom: 0 !important;
+  margin-top: 0.5% !important;
+  margin-bottom: 0.5% !important;
 }
 
 .alerts{

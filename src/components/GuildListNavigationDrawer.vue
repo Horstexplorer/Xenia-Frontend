@@ -11,7 +11,7 @@
         exact
       >
         <v-list-item-avatar>
-          <guild-icon
+          <icon
               :icon="guild.iconUrl"
               :alt="'${guild.guildName} guild'"
               :text="guild.guildName"
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import GuildIcon from "@/components/GuildIcon";
+import Icon from "@/components/Icon";
 export default {
   name: "GuildListNavigationDrawer",
   props: {
@@ -36,7 +36,7 @@ export default {
       type: Array,
     },
   },
-  components: {GuildIcon},
+  components: {Icon},
 }
 </script>
 

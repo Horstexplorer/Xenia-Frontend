@@ -12,6 +12,9 @@ import DataProcessing from "@/views/misc/DataProcessing";
 import Contact from "@/views/misc/Contact";
 import Report from "@/views/misc/Report";
 import GuildDashboard from "@/views/dashboard/GuildDashboard";
+import GuildSettings from "@/views/dashboard/overviews/GuildSettings";
+import ChannelSettings from "@/views/dashboard/overviews/ChannelSettings";
+import VirtualRoleSettings from "@/views/dashboard/overviews/VirtualRoleSettings";
 
 Vue.use(VueRouter);
 
@@ -36,6 +39,29 @@ const routes = [
                 meta: {
                     title: "Dashboard",
                 },
+                children: [
+                    {
+                        path: "guildsettings",
+                        component: GuildSettings,
+                        meta: {
+                            title: "Dashboard",
+                        },
+                    },
+                    {
+                        path: "channelsettings",
+                        component: ChannelSettings,
+                        meta: {
+                            title: "Dashboard",
+                        },
+                    },
+                    {
+                        path: "virtualrolesettings",
+                        component: VirtualRoleSettings,
+                        meta: {
+                            title: "Dashboard",
+                        },
+                    }
+                ]
             },
         ]
     },
