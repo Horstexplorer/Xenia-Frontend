@@ -12,7 +12,7 @@ export default {
     if(localStorage.getItem("authToken") == null){
       window.location.href = "https://backend.xenia.netbeacon.de/auth/discord/prepare";
     }else{
-      this.$router.push("/dashboard");
+      window.location.href = "/dashboard";
     }
   },
 }
