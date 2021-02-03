@@ -11,7 +11,7 @@ import API from "@/xbd_api/httpcore"
 export default {
   name: "Logout",
   mounted() {
-    API.logout(()=> this.$router.push("/"));
+    API.logout(()=> window.location.href = "/");
   }
 }
 </script>
