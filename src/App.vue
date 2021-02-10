@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app>
+    <v-app-bar app clipped-left>
       <v-app-bar-nav-icon v-if="isDashboard" @click="toggleDrawer" />
       <v-toolbar-title>Xenia</v-toolbar-title>
       <v-spacer/>
