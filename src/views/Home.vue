@@ -5,7 +5,7 @@
         <h1>I am Xenia</h1>
         <p>Obviously</p>
         <p>&nbsp; </p>
-        <a href="https://discord.com/oauth2/authorize?client_id=509065864763408385&permissions=388160&scope=bot%20applications.commands"> Add to Discord </a>
+        <a href="https://discord.com/oauth2/authorize?client_id=509065864763408385&permissions=388176&scope=bot%20applications.commands"> Add to Discord </a>
       </div>
     </div>
 
@@ -43,6 +43,7 @@
     <div class="description">
       <h3>Features</h3>
       <pre>
+        - Chatbot
         - Reminders
         - Twitch stream notification
         - Hastebin upload
