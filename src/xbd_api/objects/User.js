@@ -1,5 +1,3 @@
-import {getBigInt, getBigIntAsString} from "@/utils/jsonutils";
-
 export default class User {
 
     constructor(json){
@@ -11,11 +9,7 @@ export default class User {
     }
 
     getUserId() {
-        return getBigInt(this.json, "userId");
-    }
-
-    getUserIdString() {
-        return getBigIntAsString(this.json, "userId");
+        return BigInt(this.json.userId);
     }
 
     getCreationTimestamp() {

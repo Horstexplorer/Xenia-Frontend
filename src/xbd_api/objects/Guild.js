@@ -1,5 +1,3 @@
-import {getBigInt, getBigIntAsString} from "@/utils/jsonutils";
-
 export default class Guild {
 
     constructor(json){
@@ -11,11 +9,7 @@ export default class Guild {
     }
 
     getGuildId() {
-        return getBigInt(this.json, "guildId");
-    }
-
-    getGuildIdString() {
-        return getBigIntAsString(this.json, "guildId");
+        return BigInt(this.json.guildId);
     }
 
     getCreationTimestamp() {

@@ -150,7 +150,7 @@ export function getUser(userId) {
  */
 
 export function updateGuild(guild) {
-    rawHTTP_PUT("data/guilds/"+guild.getGuildIdString(), guild.getJSON()).then(
+    rawHTTP_PUT("data/guilds/"+guild.getGuildId().toString(), guild.getJSON()).then(
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
@@ -165,7 +165,7 @@ export function updateGuild(guild) {
 }
 
 export function updateGuildChannel(channel) {
-    rawHTTP_PUT("data/guilds/"+channel.getGuildIdString()+"/channels/"+channel.getChannelIdString(), channel.getJSON()).then(
+    rawHTTP_PUT("data/guilds/"+channel.getGuildId().toString()+"/channels/"+channel.getChannelId().toString(), channel.getJSON()).then(
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
@@ -180,7 +180,7 @@ export function updateGuildChannel(channel) {
 }
 
 export function updateGuildMember(member) {
-    rawHTTP_PUT("data/guilds/"+member.getGuildIdString()+"/members/"+member.getUserIdString(), member.getJSON()).then(
+    rawHTTP_PUT("data/guilds/"+member.getGuildId().toString()+"/members/"+member.getUserId().toString(), member.getJSON()).then(
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
@@ -195,7 +195,7 @@ export function updateGuildMember(member) {
 }
 
 export function updateRole(role) {
-    rawHTTP_PUT("data/guilds/"+role.getGuildIdString()+"/roles/"+role.getRoleId(), role.getJSON()).then(
+    rawHTTP_PUT("data/guilds/"+role.getGuildId().toString()+"/roles/"+role.getRoleId().toString(), role.getJSON()).then(
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
@@ -214,7 +214,7 @@ export function updateRole(role) {
  */
 
 export function createRole(guild) {
-    rawHTTP_POST("data/guilds/"+guild.getGuildIdString()+"/roles/-1", {}).then(
+    rawHTTP_POST("data/guilds/"+guild.getGuildId().toString()+"/roles/-1", {}).then(
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
@@ -233,7 +233,7 @@ export function createRole(guild) {
  */
 
 export function deleteRole(role) {
-    rawHTTP_DELETE("data/guilds/"+role.getGuildIdString()+"/roles/"+role.getRoleId()).then(
+    rawHTTP_DELETE("data/guilds/"+role.getGuildId().toString()+"/roles/"+role.getRoleId().toString()).then(
         () => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {

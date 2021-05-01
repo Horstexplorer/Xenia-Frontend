@@ -1,5 +1,3 @@
-import {putBigIntAsLong, getBigInt, getBigIntAsString} from "@/utils/jsonutils";
-
 export default class Role {
 
     constructor(json) {
@@ -11,19 +9,11 @@ export default class Role {
     }
 
     getGuildId() {
-        return getBigInt(this.json, "guildId");
-    }
-
-    getGuildIdString() {
-        return getBigIntAsString(this.json, "guildId");
+        return BigInt(this.json.guildId);
     }
 
     getRoleId() {
-        return getBigInt(this.json, "roleId");
-    }
-
-    getRoleIdString() {
-        return getBigIntAsString(this.json, "roleId");
+        return BigInt(this.json.roleId);
     }
 
     getRoleName() {
@@ -35,14 +25,14 @@ export default class Role {
     }
 
     getPermissionsRaw() {
-        return getBigInt(this.json, "rolePermissions");
-    }
-
-    getPermissionsRawString() {
-        return getBigIntAsString(this.json, "rolePermissions")
+        return BigInt(this.json.rolePermissions);
     }
 
     setPermissionsRaw(value) {
-        putBigIntAsLong(this.json, "rolePermissions", value)
+        if(value instanceof BigInt){
+            this.json.rolePermissions = value.toString();
+        }else {
+            this.json.rolePermissions = value;
+        }
     }
 }

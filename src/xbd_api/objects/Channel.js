@@ -1,5 +1,3 @@
-import {getBigInt, getBigIntAsString, putBigIntAsLong, putStringAsLong} from "@/utils/jsonutils";
-
 export default class Channel {
 
     constructor(json){
@@ -11,19 +9,11 @@ export default class Channel {
     }
 
     getGuildId() {
-        return getBigInt(this.json, "guildId");
-    }
-
-    getGuildIdString() {
-        return getBigIntAsString(this.json, "guildId");
+        return BigInt(this.json.guildId);
     }
 
     getChannelId() {
-        return getBigInt(this.json, "channelId");
-    }
-
-    getChannelIdString() {
-        return getBigIntAsString(this.json, "channelId");
+        return BigInt(this.json.channelId);
     }
 
     getCreationTimestamp() {
@@ -59,15 +49,15 @@ export default class Channel {
     }
 
     getTmpLoggingChannelId() {
-        return getBigInt(this.json, "tmpLoggingChannelId");
-    }
-
-    getTmpLoggingChannelIdString() {
-        return getBigIntAsString(this.json, "tmpLoggingChannelId");
+        return BigInt(this.json.tmpLoggingChannelId);
     }
 
     setTmpLoggingChannel(value){
-        putBigIntAsLong(this.json, "tmpLoggingChannelId", value)
+        if(value instanceof BigInt){
+            this.json.tmpLoggingChannelId = value.toString();
+        }else {
+            this.json.tmpLoggingChannelId = value;
+        }
     }
 
     getD43Z1SettingsRaw() {

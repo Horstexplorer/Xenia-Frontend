@@ -1,5 +1,3 @@
-import {getBigInt, getBigIntAsString, putBigIntAsLong} from "@/utils/jsonutils";
-
 export default class Member {
 
     constructor(json){
@@ -11,19 +9,11 @@ export default class Member {
     }
 
     getGuildId() {
-        return getBigInt(this.json, "guildId");
-    }
-
-    getGuildIdString() {
-        return getBigIntAsString(this.json, "guildId");
+        return BigInt(this.json.guildId);
     }
 
     getUserId() {
-        return getBigInt(this.json, "userId");
-    }
-
-    getUserIdString() {
-        return getBigIntAsString(this.json, "userId");
+        return BigInt(this.json.userId);
     }
 
     getCreationTimestamp() {
@@ -31,7 +21,7 @@ export default class Member {
     }
 
     getRoleIds() {
-        return BigInt64Array(this.json.roles)
+        return new BigInt64Array(this.json.roles)
     }
 
 
