@@ -4,7 +4,7 @@ import Vue from "vue";
 const DEFAULT_SCOPES = ["identify"]
 const BACKEND_URL = "https://backend.xenia.netbeacon.de"
 
-const AUTH_TOKEN = {
+export const AUTH_TOKEN = {
     get isSet(){
         return localStorage.getItem("authToken") !== null && localStorage.getItem("authToken") !== undefined;
     },
