@@ -7,7 +7,7 @@
 
 <script>
 import API from "@/xbd_api/httpcore"
-import GuildListNavigationDrawer from "@/components/GuildListNavigationDrawer";
+import GuildListNavigationDrawer from "@/components/guildlist/GuildListNavigationDrawer";
 
 export default {
   name: "Dashboard",
