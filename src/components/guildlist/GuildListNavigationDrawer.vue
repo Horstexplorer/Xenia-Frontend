@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import Icon from "@/components/Icon";
+import Icon from "@/components/icon/Icon";
 export default {
   name: "GuildListNavigationDrawer",
   props: {

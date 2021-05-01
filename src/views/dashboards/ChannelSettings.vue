@@ -7,6 +7,9 @@
 <script>
 export default {
   name: "ChannelSettings",
+  mounted() {
+
+  }
 }
 </script>
 

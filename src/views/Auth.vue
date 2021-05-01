@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-view></router-view>
+    <router-view @notify="addAlert"/>
   </div>
 </template>
 
@@ -11,7 +11,23 @@ export default {
     if(this.$route.path.toLowerCase() === "/auth"){
       this.$router.push("/");
     }
-  }
+  },
+  computed: {
+    drawer: {
+      get() {
+        return this.value;
+      },
+      set(value) {
+        this.$emit("input", value);
+      },
+    },
+  },
+
+  methods:{
+    addAlert(level, message){
+      this.$emit("notify", level, message)
+    }
+  },
 }
 </script>
 
