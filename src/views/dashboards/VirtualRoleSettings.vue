@@ -6,7 +6,10 @@
 
 <script>
 export default {
-  name: "VirtualRoleSettings"
+  name: "VirtualRoleSettings",
+  mounted() {
+
+  }
 }
 </script>
 
