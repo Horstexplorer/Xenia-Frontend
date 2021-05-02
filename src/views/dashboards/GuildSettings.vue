@@ -4,7 +4,8 @@
       <h1>Guild Settings</h1>
     </div>
     <div class="dashboard-settings">
-
+      <GeneralGuildSettings v-if="guild != null" :guild="guild"/>
+      <LicenseSettings v-if="license != null" :license="license"/>
     </div>
   </div>
 </template>
@@ -12,10 +13,12 @@
 <script>
 
 import API from "@/xbd_api/xbd_api";
+import GeneralGuildSettings from "@/components/settings/guild/GeneralGuildSettings";
+import LicenseSettings from "@/components/settings/guild/LicenseSettings";
 
 export default {
   name: "GuildSettings",
-
+  components: {LicenseSettings, GeneralGuildSettings},
   data(){
     return{
       guild: null,

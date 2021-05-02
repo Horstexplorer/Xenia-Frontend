@@ -39,7 +39,6 @@ export function getGuildLicense(guildId) {
                 successI(new License(LosslessJSON.parse(response.bodyText)))
             });
         }, (error) => {
-            console.log(error)
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
                 rejectI({"error": error.status, "msg": error.statusText});
