@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="component-area">
     <pre>
       <h1>Contact</h1>
       <b>Discord</b>
@@ -15,5 +15,11 @@ export default {
 </script>
 
 <style scoped>
-
+.component-area{
+  height: 100%;
+  font-size: 21px;
+  color: white;
+  font-family: "Lato", sans-serif;
+  padding-left: 1%;
+}
 </style>

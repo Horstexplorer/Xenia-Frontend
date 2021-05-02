@@ -9,11 +9,11 @@ export default class Member {
     }
 
     getGuildId() {
-        return BigInt(this.json.guildId);
+        return BigInt(this.json.guildId.toString());
     }
 
     getUserId() {
-        return BigInt(this.json.userId);
+        return BigInt(this.json.userId.toString());
     }
 
     getCreationTimestamp() {

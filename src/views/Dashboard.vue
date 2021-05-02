@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <guild-list-navigation-drawer v-model="drawer" :guilds="guilds" />
-    <router-view @notify="addAlert" />
+    <router-view @notify="addAlert" :key="$route.fullPath"/>
   </div>
 </template>
 

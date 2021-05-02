@@ -36,7 +36,7 @@ export default {
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../assets/background.jpg");
-  height: 66vh;
+  height: 34vw;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
