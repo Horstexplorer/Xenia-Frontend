@@ -8,7 +8,6 @@
 <script>
 import APICORE from "@/xbd_api/httpcore"
 import GuildListNavigationDrawer from "@/components/guildlist/GuildListNavigationDrawer";
-import {DEV_MODE} from "@/utils/routesutil";
 
 export default {
   name: "Dashboard",

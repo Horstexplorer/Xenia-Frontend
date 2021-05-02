@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import {BACKEND_URL} from "@/utils/routesutil";
+import {BACKEND_URL, DEV_MODE} from "@/utils/routesutil";
 
 export default {
   name: "Login",
@@ -17,7 +17,7 @@ export default {
   mounted() {
     if(localStorage.getItem("authToken") == null){
       setTimeout(function() {
-        window.location.href = BACKEND_URL+"auth/discord/prepare";
+        window.location.href = BACKEND_URL+"auth/discord/prepare"+(DEV_MODE)?"?dev=true":"";
       }, 2000);
     }else{
       window.location.href = "/dashboard";
