@@ -9,11 +9,11 @@ export default class Role {
     }
 
     getGuildId() {
-        return BigInt(this.json.guildId);
+        return BigInt(this.json.guildId.toString());
     }
 
     getRoleId() {
-        return BigInt(this.json.roleId);
+        return BigInt(this.json.roleId.toString());
     }
 
     getRoleName() {
@@ -25,7 +25,7 @@ export default class Role {
     }
 
     getPermissionsRaw() {
-        return BigInt(this.json.rolePermissions);
+        return BigInt(this.json.rolePermissions.toString());
     }
 
     setPermissionsRaw(value) {

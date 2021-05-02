@@ -10,6 +10,7 @@ import Member from "@/xbd_api/objects/Member";
 import License from "@/xbd_api/objects/License";
 import Channel from "@/xbd_api/objects/Channel";
 import Role from "@/xbd_api/objects/Role";
+const LosslessJSON = require('lossless-json');
 
 /*
     GET
@@ -20,12 +21,12 @@ export function getGuild(guildId) {
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
-                successI(new Guild(response.body))
+                successI(new Guild(LosslessJSON.parse(response.bodyText)))
             });
     }, (error) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
     })
 }
@@ -35,12 +36,13 @@ export function getGuildLicense(guildId) {
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
-                successI(new License(response.body))
+                successI(new License(LosslessJSON.parse(response.bodyText)))
             });
         }, (error) => {
+            console.log(error)
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
         })
 }
@@ -50,12 +52,12 @@ export function getGuildChannelIds(guildId) {
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
-                successI(response.body)
+                successI(LosslessJSON.parse(response.bodyText))
             });
         }, (error) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
         })
 }
@@ -65,12 +67,12 @@ export function getGuildChannel(guildId, channelId) {
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
-                successI(new Channel(response.body))
+                successI(new Channel(LosslessJSON.parse(response.bodyText)))
             });
         }, (error) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
         })
 }
@@ -80,12 +82,12 @@ export function getGuildMemberIds(guildId) {
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
-                successI(response.body)
+                successI(LosslessJSON.parse(response.bodyText))
             });
         }, (error) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
         })
 }
@@ -95,12 +97,12 @@ export function getGuildMember(guildId, userId) {
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
-                successI(new Member(response.body))
+                successI(new Member(LosslessJSON.parse(response.bodyText)))
             });
         }, (error) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
         })
 }
@@ -110,12 +112,12 @@ export function getGuildRoleIds(guildId) {
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
-                successI(response.body)
+                successI(LosslessJSON.parse(response.bodyText))
             });
         }, (error) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
         })
 }
@@ -125,12 +127,12 @@ export function getGuildRole(guildId, roleId) {
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
-                successI(new Role(response.body))
+                successI(new Role(LosslessJSON.parse(response.bodyText)))
             });
         }, (error) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
         })
 }
@@ -140,12 +142,12 @@ export function getUser(userId) {
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
-                successI(new User(response.body))
+                successI(new User(LosslessJSON.parse(response.bodyText)))
             });
         }, (error) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
         })
 }
@@ -159,12 +161,12 @@ export function updateGuild(guild) {
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
-                successI(new Guild(response.body))
+                successI(new Guild(LosslessJSON.parse(response.bodyText)))
             });
         }, (error) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
         })
 }
@@ -174,12 +176,12 @@ export function updateGuildChannel(channel) {
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
-                successI(new Channel(response.body))
+                successI(new Channel(LosslessJSON.parse(response.bodyText)))
             });
         }, (error) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
         })
 }
@@ -189,12 +191,12 @@ export function updateGuildMember(member) {
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
-                successI(new Member(response.body))
+                successI(new Member(LosslessJSON.parse(response.bodyText)))
             });
         }, (error) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
         })
 }
@@ -204,12 +206,12 @@ export function updateRole(role) {
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
-                successI(new Role(response.body))
+                successI(new Role(LosslessJSON.parse(response.bodyText)))
             });
         }, (error) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
         })
 }
@@ -223,12 +225,12 @@ export function createRole(guild) {
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
-                successI(new Role(response.body))
+                successI(new Role(LosslessJSON.parse(response.bodyText)))
             });
         }, (error) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
         })
 }
@@ -247,7 +249,7 @@ export function deleteRole(role) {
         }, (error) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise(((resolveI, rejectI) => {
-                rejectI({"error": error.code});
+                rejectI({"error": error.status, "msg": error.statusText});
             }))
         })
 }

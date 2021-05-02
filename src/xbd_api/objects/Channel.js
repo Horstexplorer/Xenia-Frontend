@@ -9,11 +9,11 @@ export default class Channel {
     }
 
     getGuildId() {
-        return BigInt(this.json.guildId);
+        return BigInt(this.json.guildId.toString());
     }
 
     getChannelId() {
-        return BigInt(this.json.channelId);
+        return BigInt(this.json.channelId.toString());
     }
 
     getCreationTimestamp() {
@@ -49,7 +49,7 @@ export default class Channel {
     }
 
     getTmpLoggingChannelId() {
-        return BigInt(this.json.tmpLoggingChannelId);
+        return BigInt(this.json.tmpLoggingChannelId.toString());
     }
 
     setTmpLoggingChannel(value){

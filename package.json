@@ -11,6 +11,7 @@
   "dependencies": {
     "@material-icons/font": "^1.0.8",
     "core-js": "^3.11.1",
+    "lossless-json": "^1.0.4",
     "npm-force-resolutions": "0.0.10",
     "ssri": "^8.0.1",
     "vue": "^2.6.12",

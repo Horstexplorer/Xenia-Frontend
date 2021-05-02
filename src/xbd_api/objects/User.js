@@ -9,7 +9,7 @@ export default class User {
     }
 
     getUserId() {
-        return BigInt(this.json.userId);
+        return BigInt(this.json.userId.toString());
     }
 
     getCreationTimestamp() {

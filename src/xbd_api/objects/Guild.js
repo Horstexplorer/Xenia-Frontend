@@ -9,7 +9,7 @@ export default class Guild {
     }
 
     getGuildId() {
-        return BigInt(this.json.guildId);
+        return BigInt(this.json.guildId.toString());
     }
 
     getCreationTimestamp() {
