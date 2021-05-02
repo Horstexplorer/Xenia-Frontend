@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import API from "@/xbd_api/httpcore"
+import APICORE from "@/xbd_api/httpcore"
 import GuildListNavigationDrawer from "@/components/guildlist/GuildListNavigationDrawer";
 
 export default {
@@ -27,13 +27,13 @@ export default {
   },
 
   mounted() {
-    if(!API.AUTH_TOKEN.isSet){
-      this.$router.push("/");
+    if(!APICORE.AUTH_TOKEN.isSet){
       this.$emit("notify", "warning", "You need to be logged in to view this page");
+      this.$router.push("/");
       return;
     }
     // load data for guilds
-    API.rawHTTP_GET("/data/client/frontend/meta/guilds").then(
+    APICORE.rawHTTP_GET("data/client/frontend/meta/guilds").then(
         response => {
           this.guilds = response.body.guilds;
         }, () => {}

@@ -27,7 +27,7 @@ export default {
           () => window.location.href = "/dashboard",
           () => {
             this.$emit("notify", "warning", "Login failed. This might happen because you haven't interacted with the bot yet or the transmission was faulty");
-            window.location.href = "/"
+            this.$router.push("/");
           }
       );
     }
