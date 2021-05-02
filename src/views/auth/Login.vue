@@ -9,13 +9,15 @@
 </template>
 
 <script>
+import {BACKEND_URL} from "@/utils/routesutil";
+
 export default {
   name: "Login",
 
   mounted() {
     if(localStorage.getItem("authToken") == null){
       setTimeout(function() {
-        window.location.href = "https://backend.xenia.netbeacon.de/auth/discord/prepare";
+        window.location.href = BACKEND_URL+"auth/discord/prepare";
       }, 2000);
     }else{
       window.location.href = "/dashboard";
