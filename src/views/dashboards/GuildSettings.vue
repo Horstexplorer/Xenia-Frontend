@@ -16,37 +16,38 @@ import API from "@/xbd_api/xbd_api";
 export default {
   name: "GuildSettings",
 
-  mounted() {
-
-    this.$emit("notify", "info", "Not implemented yet");
-    this.$router.push("/dashboard");
-    if(this){
-      return;
+  data(){
+    return{
+      guild: null,
+      license: null
     }
+  },
 
-    API.getGuild("").then(
+  mounted() {
+    API.getGuild(this.$route.params.guildId).then(
         (guild) => {
-          console.log(guild.getJSON())
-          API.getGuildLicense(guild.getGuildId()).then(
+          this.guild = guild;
+          API.getGuildLicense(this.$route.params.guildId).then(
               (license) => {
-                console.log(license.getJSON())
-
-                this.$emit("notify", "info", "Not implemented yet");
-                this.$router.push("/dashboard");
-                return;
-
+                this.license = license;
               },
               (error) => {
-                this.$emit("notify", "warning", "Failed to get data \"guild-license\" :"+error.error+": You might not have the right permissions to view and edit those things");
+                if(error.error === 403){
+                  this.$emit("notify", "warning", "You are not allowed to view and edit those things");
+                }else{
+                  this.$emit("notify", "warning", "Failed to get data \"guild-license\" :"+error.error+": "+error.msg);
+                }
                 this.$router.push("/dashboard");
-                return;
               }
           )
         },
         (error) => {
-          this.$emit("notify", "warning", "Failed to get data \"guild\" :"+error.error+": You might not have the right permissions to view and edit those things");
+          if(error.error === 403){
+            this.$emit("notify", "warning", "You are not allowed to view and edit those things");
+          }else{
+            this.$emit("notify", "warning", "Failed to get data \"guild\" :"+error.error+": "+error.msg);
+          }
           this.$router.push("/dashboard");
-          return;
         }
     )
   }

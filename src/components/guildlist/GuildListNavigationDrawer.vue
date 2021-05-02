@@ -87,7 +87,7 @@ export default {
 
   methods: {
     isSelected(guildId){
-      return this.guildId == guildId
+      return this.guildId === guildId
     }
   }
 }
