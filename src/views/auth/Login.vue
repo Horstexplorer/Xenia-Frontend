@@ -17,10 +17,10 @@ export default {
   mounted() {
     if(localStorage.getItem("authToken") == null){
       setTimeout(function() {
-        window.location.href = BACKEND_URL+"auth/discord/prepare"+(DEV_MODE)?"?dev=true":"";
+        window.location.href = BACKEND_URL+"auth/discord/prepare"+((DEV_MODE)?"?dev=true":"");
       }, 2000);
     }else{
-      window.location.href = "/dashboard";
+      this.$router.push("/dashboard");
     }
   },
 }

@@ -1,7 +1,10 @@
 <template>
   <div class="component-area">
+    <div class="dashboard-header">
+      <h1>Virtual Role Settings</h1>
+    </div>
     <div class="dashboard-settings">
-      Virtual Role Settings
+
     </div>
   </div>
 </template>
@@ -9,8 +12,10 @@
 <script>
 export default {
   name: "VirtualRoleSettings",
-  mounted() {
 
+  mounted() {
+    this.$emit("notify", "info", "Not implemented yet");
+    this.$router.push("/dashboard");
   }
 }
 </script>
@@ -21,8 +26,6 @@ export default {
   font-size: 21px;
   color: white;
   font-family: "Lato", sans-serif;
-}
-.dashboard-settings{
-  color: white;
+  padding-left: 1%;
 }
 </style>
