@@ -110,32 +110,32 @@ export default {
   font-family: "Lato", sans-serif;
   padding-left: 1%;
   margin-top: 1%;
-}
-.title {
-  h1{
-    font-size: 32px;
-  }
-}
-.license {
-  .name {
-    color: gray;
-  }
-  .description {
-    font-size: 18px;
-    color: gray;
-  }
-  .until {
-    color: gray;
-  }
-  .perks {
-    font-size: 24px;
-    .name {
-      font-size: 20px;
-      color: white;
+  .title {
+    h1{
+      font-size: 32px;
     }
-    .value {
-      font-size: 20px;
+  }
+  .license {
+    .name {
       color: gray;
+    }
+    .description {
+      font-size: 18px;
+      color: gray;
+    }
+    .until {
+      color: gray;
+    }
+    .perks {
+      font-size: 24px;
+      .name {
+        font-size: 20px;
+        color: white;
+      }
+      .value {
+        font-size: 20px;
+        color: gray;
+      }
     }
   }
 }

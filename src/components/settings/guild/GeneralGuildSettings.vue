@@ -13,7 +13,7 @@
           </v-col>
           <v-col :key="2">
             <div class="created">
-              known since: {{ new Date(guild.getCreationTimestamp()) }}
+              known: {{ new Date(guild.getCreationTimestamp()) }}
             </div>
           </v-col>
         </v-row>
@@ -66,29 +66,29 @@ export default {
   font-family: "Lato", sans-serif;
   padding-left: 1%;
   margin-top: 1%;
-}
-.title {
-  h1{
-    font-size: 32px;
-  }
-}
-.guild {
-  .guildId {
-    display: inline-block;
-    font-size: 16px;
-    color: gray;
-  }
-  .created {
-    color: gray;
-  }
-  .settings {
-    .name {
-      font-size: 20px;
-      color: white;
+  .title {
+    h1{
+      font-size: 32px;
     }
-    .value {
-      font-size: 20px;
+  }
+  .guild {
+    .guildId {
+      display: inline-block;
+      font-size: 16px;
       color: gray;
+    }
+    .created {
+      color: gray;
+    }
+    .settings {
+      .name {
+        font-size: 20px;
+        color: white;
+      }
+      .value {
+        font-size: 20px;
+        color: gray;
+      }
     }
   }
 }
