@@ -19,6 +19,7 @@ import LicenseSettings from "@/components/settings/guild/LicenseSettings";
 export default {
   name: "GuildSettings",
   components: {LicenseSettings, GeneralGuildSettings},
+
   data(){
     return{
       guild: null,
