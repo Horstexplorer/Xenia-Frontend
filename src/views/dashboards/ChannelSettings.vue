@@ -26,6 +26,12 @@ export default {
     }
   },
 
+  methods: {
+    save(){
+
+    }
+  },
+
   mounted() {
     API.getGuildChannels(this.$route.params.guildId).then(
         (channels) => this.channels = channels,

@@ -16,6 +16,14 @@
             {{ new Date(channel.getCreationTimestamp()) }}
           </div>
         </v-col>
+        <v-col :id="3">
+          <v-btn
+              elevation="2"
+              dark
+              rounded
+              @click="save"
+          >Update</v-btn>
+        </v-col>
       </v-row>
       <v-row>
         <v-col :id="1">
@@ -23,7 +31,7 @@
             Access mode
           </div>
           <div class="value">
-            {{ channel.getAccessModeRaw() }}
+            <OptionSelector v-model="channel_access_mode" :options="getAccessMode()"/>
           </div>
         </v-col>
         <v-col :id="2">
@@ -31,7 +39,7 @@
             Flags
           </div>
           <div class="value">
-            {{ channel.getChannelFlagsRaw() }}
+            <OptionSelector v-model="channel_flags" :options="getChannelFlags()"/>
           </div>
         </v-col>
         <v-col :id="3">
@@ -39,7 +47,7 @@
             Settings
           </div>
           <div class="value">
-            {{ channel.getChannelSettingsRaw() }}
+            <OptionSelector v-model="channel_general_settings" :options="getChannelSettings()"/>
           </div>
         </v-col>
         <v-col :id="4">
@@ -47,7 +55,7 @@
             Chatbot Settings
           </div>
           <div class="value">
-            {{ channel.getD43Z1SettingsRaw() }}
+            <OptionSelector v-model="channel_chatbot_settings" :options="getChatbotSettings()"/>
           </div>
         </v-col>
       </v-row>
@@ -57,7 +65,12 @@
             Logging
           </div>
           <div class="value">
-            {{ channel.getTmpLoggingActive() }}
+            <v-switch
+                dark
+                color="green"
+                :value="channel.getTmpLoggingActive()"
+                v-model="channel_tmp_logging_active"
+            />
           </div>
         </v-col>
         <v-col :id="2">
@@ -65,15 +78,7 @@
             Logging channel
           </div>
           <div class="value">
-            {{ channel.getTmpLoggingChannelId() }}
-          </div>
-        </v-col>
-        <v-col :id="3">
-          <div class="name">
-
-          </div>
-          <div class="value">
-
+            {{ channel.getTmpLoggingChannelId() == -1 ? "none" : channel.getTmpLoggingChannelId()}}
           </div>
         </v-col>
       </v-row>
@@ -83,14 +88,38 @@
 
 <script>
 import Channel from "@/xbd_api/objects/Channel";
+import OptionSelector from "@/components/settings/inputs/OptionSelector";
+import {
+  ChannelAccessModeDefs,
+  ChannelD43Z1SettingsDefs, ChannelFlagsDefs,
+  ChannelSettingsDefs,
+  getOptionsOf,
+} from "@/xbd_api/objects/misc/options/OptionSet";
 
 export default {
   name: "GeneralChannelSettings",
-
+  components: {OptionSelector},
   props: {
     channel: {
       required: true,
       type: Channel
+    }
+  },
+  methods: {
+    getAccessMode(){
+      return getOptionsOf(ChannelAccessModeDefs, this.channel.getAccessModeRaw())
+    },
+    getChannelFlags(){
+      return getOptionsOf(ChannelFlagsDefs, this.channel.getChannelFlagsRaw())
+    },
+    getChannelSettings(){
+      return getOptionsOf(ChannelSettingsDefs, this.channel.getChannelSettingsRaw())
+    },
+    getChatbotSettings(){
+      return getOptionsOf(ChannelD43Z1SettingsDefs, this.channel.getD43Z1SettingsRaw())
+    },
+    save(){
+
     }
   }
 }

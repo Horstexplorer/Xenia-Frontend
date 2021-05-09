@@ -79,6 +79,19 @@
                 </div>
               </v-col>
             </v-row>
+            <v-row>
+              <v-col :key="1">
+                <TextInput v-model="license_key" default_content="License key"/>
+              </v-col>
+              <v-col :key="2">
+                <v-btn
+                    elevation="2"
+                    dark
+                    rounded
+                    @click="save"
+                >Update</v-btn>
+              </v-col>
+            </v-row>
           </div>
         </v-col>
       </v-row>
@@ -88,15 +101,23 @@
 
 <script>
 import License from "@/xbd_api/objects/License";
+import TextInput from "@/components/settings/inputs/TextInput";
 
 export default {
   name: "LicenseSettings",
+  components: {TextInput},
 
   props: {
     license: {
       required: true,
       type: License,
     },
+  },
+
+  methods: {
+    save(){
+
+    }
   },
 }
 </script>

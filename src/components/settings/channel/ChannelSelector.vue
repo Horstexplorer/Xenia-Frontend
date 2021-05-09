@@ -4,15 +4,19 @@
       <h1>Channels</h1>
     </div>
     <div class="selection">
-      <v-autocomplete
-          v-model="selection"
-          placeholder="Select channel"
-          :items="parsedChannels"
-          item-text="name"
-          item-value="value"
-          rounded
-          background-color="#777777"
-      />
+      <v-row>
+        <v-col>
+          <v-autocomplete
+              v-model="selection"
+              placeholder="Select channel"
+              :items="parsedChannels"
+              item-text="name"
+              item-value="value"
+              rounded
+              dark
+          />
+        </v-col>
+      </v-row>
     </div>
   </div>
 </template>

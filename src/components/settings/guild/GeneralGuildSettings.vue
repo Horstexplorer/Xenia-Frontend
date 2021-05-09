@@ -16,6 +16,14 @@
               known: {{ new Date(guild.getCreationTimestamp()) }}
             </div>
           </v-col>
+          <v-col :key="3" >
+            <v-btn
+                elevation="2"
+                dark
+                rounded
+                @click="save"
+            >Update</v-btn>
+          </v-col>
         </v-row>
         <v-row>
           <v-col :key="1">
@@ -23,7 +31,7 @@
               Prefix
             </div>
             <div class="value">
-              {{ guild.getPrefix() }}
+              <TextInput  v-model="guild_prefix" :max_length="4" :default_content="guild.getPrefix()"/>
             </div>
           </v-col>
           <v-col :key="2">
@@ -36,6 +44,26 @@
           </v-col>
           <v-col :key="3"></v-col>
         </v-row>
+        <v-row>
+          <v-col :key="1">
+            <div class="name">
+              General settings
+            </div>
+            <div class="value">
+              <OptionSelector v-model="guild_settings_general" :options="getGuildSettings()"/>
+            </div>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col :key="1">
+            <div class="name">
+              General chatbot settings
+            </div>
+            <div class="value">
+              <OptionSelector v-model="guild_settings_chatbot" :options="getChatbotSettings()"/>
+            </div>
+          </v-col>
+        </v-row>
       </div>
     </div>
   </div>
@@ -43,16 +71,30 @@
 
 <script>
 import Guild from "@/xbd_api/objects/Guild";
+import TextInput from "@/components/settings/inputs/TextInput";
+import OptionSelector from "@/components/settings/inputs/OptionSelector";
+import {getOptionsOf, GuildD43Z1ModeDefs, GuildSettingOptionDefs} from "@/xbd_api/objects/misc/options/OptionSet";
 
 export default {
   name: "GeneralGuildSettings",
-
+  components: {OptionSelector, TextInput},
   props: {
     guild: {
       required: true,
       type: Guild,
     },
   },
+  methods: {
+    getGuildSettings(){
+      return getOptionsOf(GuildSettingOptionDefs, this.guild.getSettingsRaw())
+    },
+    getChatbotSettings(){
+      return getOptionsOf(GuildD43Z1ModeDefs, this.guild.getD43Z1ModeRaw())
+    },
+    save(){
+
+    }
+  }
 }
 </script>
 
