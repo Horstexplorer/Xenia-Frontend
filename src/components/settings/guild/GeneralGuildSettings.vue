@@ -21,7 +21,7 @@
                 elevation="2"
                 dark
                 rounded
-                @click="save"
+                @click="save()"
             >Update</v-btn>
           </v-col>
         </v-row>
@@ -50,7 +50,7 @@
               General settings
             </div>
             <div class="value">
-              <OptionSelector v-model="guild_settings_general" :options="getGuildSettings()"/>
+              <OptionSelector v-model="guildOptions"/>
             </div>
           </v-col>
         </v-row>
@@ -60,7 +60,7 @@
               General chatbot settings
             </div>
             <div class="value">
-              <OptionSelector v-model="guild_settings_chatbot" :options="getChatbotSettings()"/>
+              <OptionSelector v-model="chatbotOptions"/>
             </div>
           </v-col>
         </v-row>
@@ -70,10 +70,11 @@
 </template>
 
 <script>
+import API from "@/xbd_api/xbd_api";
 import Guild from "@/xbd_api/objects/Guild";
 import TextInput from "@/components/settings/inputs/TextInput";
 import OptionSelector from "@/components/settings/inputs/OptionSelector";
-import {getOptionsOf, GuildD43Z1ModeDefs, GuildSettingOptionDefs} from "@/xbd_api/objects/misc/options/OptionSet";
+import {getOptionsOf, getRawOf, GuildD43Z1ModeDefs, GuildSettingOptionDefs} from "@/xbd_api/objects/misc/options/OptionSet";
 
 export default {
   name: "GeneralGuildSettings",
@@ -84,15 +85,39 @@ export default {
       type: Guild,
     },
   },
-  methods: {
-    getGuildSettings(){
-      return getOptionsOf(GuildSettingOptionDefs, this.guild.getSettingsRaw())
-    },
-    getChatbotSettings(){
-      return getOptionsOf(GuildD43Z1ModeDefs, this.guild.getD43Z1ModeRaw())
-    },
-    save(){
 
+  data() {
+    return {
+      guildOptions: getOptionsOf(GuildSettingOptionDefs, this.guild.getSettingsRaw()),
+      chatbotOptions: getOptionsOf(GuildD43Z1ModeDefs, this.guild.getD43Z1ModeRaw()),
+      guild_prefix: this.guild.getPrefix()
+    }
+  },
+
+  methods: {
+    save(){
+      this.guild.setPrefix(this.guild_prefix)
+      this.guild.setSettingsRaw(getRawOf(this.guildOptions))
+      this.guild.setD43Z1ModeRaw(getRawOf(this.chatbotOptions))
+
+      API.updateGuild(this.guild).then(
+          () => {
+            this.$emit("notify", "info", "Updated!");
+            setTimeout(function() {
+              location.reload();
+            }, 2000);
+          },
+          (error) => {
+            if(error.error === 403){
+              this.$emit("notify", "warning", "You are not allowed to view and edit those things");
+            }else{
+              this.$emit("notify", "warning", "Failed to update data \"guild\" :"+error.error+": "+error.msg);
+            }
+            setTimeout(function() {
+              location.reload();
+            }, 2000);
+          }
+      )
     }
   }
 }

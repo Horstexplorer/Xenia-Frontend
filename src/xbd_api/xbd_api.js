@@ -182,6 +182,21 @@ export function updateGuild(guild) {
         })
 }
 
+export function updateGuildLicense(guild, licenseKey) {
+    return rawHTTP_PUT("data/guilds/"+guild.getGuildId().toString()+"?licenseKey="+licenseKey, {}).then(
+        (response) => {
+            // eslint-disable-next-line no-unused-vars
+            return new Promise((successI, errorI) => {
+                successI(new License(LosslessJSON.parse(response.bodyText)))
+            })
+        }, (error) => {
+            // eslint-disable-next-line no-unused-vars
+            return new Promise(((resolveI, rejectI) => {
+                rejectI({"error": error.status, "msg": error.statusText})
+            }))
+        })
+}
+
 export function updateGuildChannel(channel) {
     return rawHTTP_PUT("data/guilds/"+channel.getGuildId().toString()+"/channels/"+channel.getChannelId().toString(), channel.getJSON()).then(
         (response) => {
@@ -268,6 +283,6 @@ export function deleteRole(role) {
 export default {
     deleteRole,
     createRole,
-    updateRole, updateGuildMember, updateGuildChannel, updateGuild,
+    updateRole, updateGuildMember, updateGuildChannel, updateGuild, updateGuildLicense,
     getUser, getGuildRole, getGuildRoles, getGuildMember, getGuildMembers, getGuildChannel, getGuildChannels, getGuildLicense, getGuild
 }

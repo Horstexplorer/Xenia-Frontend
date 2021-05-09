@@ -21,7 +21,7 @@
               elevation="2"
               dark
               rounded
-              @click="save"
+              @click="save()"
           >Update</v-btn>
         </v-col>
       </v-row>
@@ -31,7 +31,7 @@
             Access mode
           </div>
           <div class="value">
-            <OptionSelector v-model="channel_access_mode" :options="getAccessMode()"/>
+            <OptionSelector v-model="accessMode"/>
           </div>
         </v-col>
         <v-col :id="2">
@@ -39,7 +39,7 @@
             Flags
           </div>
           <div class="value">
-            <OptionSelector v-model="channel_flags" :options="getChannelFlags()"/>
+            <OptionSelector v-model="channelFlags"/>
           </div>
         </v-col>
         <v-col :id="3">
@@ -47,7 +47,7 @@
             Settings
           </div>
           <div class="value">
-            <OptionSelector v-model="channel_general_settings" :options="getChannelSettings()"/>
+            <OptionSelector v-model="channelSettings"/>
           </div>
         </v-col>
         <v-col :id="4">
@@ -55,7 +55,7 @@
             Chatbot Settings
           </div>
           <div class="value">
-            <OptionSelector v-model="channel_chatbot_settings" :options="getChatbotSettings()"/>
+            <OptionSelector v-model="chatbotSettings"/>
           </div>
         </v-col>
       </v-row>
@@ -87,39 +87,63 @@
 </template>
 
 <script>
+import API from "@/xbd_api/xbd_api";
 import Channel from "@/xbd_api/objects/Channel";
 import OptionSelector from "@/components/settings/inputs/OptionSelector";
+
 import {
   ChannelAccessModeDefs,
   ChannelD43Z1SettingsDefs, ChannelFlagsDefs,
   ChannelSettingsDefs,
   getOptionsOf,
+  getRawOf
 } from "@/xbd_api/objects/misc/options/OptionSet";
 
 export default {
   name: "GeneralChannelSettings",
   components: {OptionSelector},
+
   props: {
     channel: {
       required: true,
       type: Channel
     }
   },
-  methods: {
-    getAccessMode(){
-      return getOptionsOf(ChannelAccessModeDefs, this.channel.getAccessModeRaw())
-    },
-    getChannelFlags(){
-      return getOptionsOf(ChannelFlagsDefs, this.channel.getChannelFlagsRaw())
-    },
-    getChannelSettings(){
-      return getOptionsOf(ChannelSettingsDefs, this.channel.getChannelSettingsRaw())
-    },
-    getChatbotSettings(){
-      return getOptionsOf(ChannelD43Z1SettingsDefs, this.channel.getD43Z1SettingsRaw())
-    },
-    save(){
 
+  data() {
+    return {
+      accessMode: getOptionsOf(ChannelAccessModeDefs, this.channel.getAccessModeRaw()),
+      channelFlags: getOptionsOf(ChannelFlagsDefs, this.channel.getChannelFlagsRaw()),
+      channelSettings: getOptionsOf(ChannelSettingsDefs, this.channel.getChannelSettingsRaw()),
+      chatbotSettings: getOptionsOf(ChannelD43Z1SettingsDefs, this.channel.getD43Z1SettingsRaw()),
+      channel_tmp_logging_active: this.channel.getTmpLoggingActive()
+    }
+  },
+
+  methods: {
+    save(){
+        this.channel.setAccessModeRaw(getRawOf(this.accessMode))
+        this.channel.setChannelSettingsRaw(getRawOf(this.channelSettings))
+        this.channel.setTmpLoggingActive(this.channel_tmp_logging_active)
+
+        API.updateGuildChannel(this.channel).then(
+            () => {
+              this.$emit("notify", "info", "Updated!");
+              setTimeout(function() {
+                location.reload();
+              }, 2000);
+            },
+            (error) => {
+              if(error.error === 403){
+                this.$emit("notify", "warning", "You are not allowed to view and edit those things");
+              }else{
+                this.$emit("notify", "warning", "Failed to update data \"channel\" :"+error.error+": "+error.msg);
+              }
+              setTimeout(function() {
+                location.reload();
+              }, 2000);
+            }
+        )
     }
   }
 }

@@ -100,23 +100,52 @@
 </template>
 
 <script>
+import API from "@/xbd_api/xbd_api";
 import License from "@/xbd_api/objects/License";
 import TextInput from "@/components/settings/inputs/TextInput";
+import Guild from "@/xbd_api/objects/Guild";
 
 export default {
   name: "LicenseSettings",
   components: {TextInput},
 
   props: {
+    guild: {
+      required: true,
+      type: Guild,
+    },
     license: {
       required: true,
       type: License,
     },
   },
 
+  data() {
+    return {
+      license_key: null,
+    }
+  },
+
   methods: {
     save(){
-
+      API.updateGuildLicense(this.guild, this.license_key).then(
+          () => {
+            this.$emit("notify", "info", "Updated!");
+            setTimeout(function() {
+              location.reload();
+            }, 2000);
+          },
+          (error) => {
+            if(error.error === 403){
+              this.$emit("notify", "warning", "You are not allowed to view and edit those things");
+            }else{
+              this.$emit("notify", "warning", "Failed to update data \"license\" :"+error.error+": "+error.msg);
+            }
+            setTimeout(function() {
+              location.reload();
+            }, 2000);
+          }
+      )
     }
   },
 }

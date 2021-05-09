@@ -3,9 +3,9 @@
     <div class="dashboard-header">
       <h1>Channel Settings</h1>
     </div>
-    <div class="dashboard-settings">
-      <ChannelSelector v-if="channels != null" :channels="channels"  v-model="selectedChannel"/>
-      <GeneralChannelSettings v-if="selectedChannel != null" :channel="selectedChannel"/>
+    <div class="dashboard-settings" v-if="ready">
+      <ChannelSelector :channels="channels"  v-model="selectedChannel" @notify="addAlert"/>
+      <GeneralChannelSettings v-if="selectedChannel != null" :channel="selectedChannel" @notify="addAlert"/>
     </div>
   </div>
 </template>
@@ -22,19 +22,23 @@ export default {
   data(){
     return{
       channels: null,
-      selectedChannel: null
+      selectedChannel: null,
+      ready: false
     }
   },
 
   methods: {
-    save(){
-
+    addAlert(level, message){
+      this.$emit("notify", level, message)
     }
   },
 
   mounted() {
     API.getGuildChannels(this.$route.params.guildId).then(
-        (channels) => this.channels = channels,
+        (channels) => {
+          this.channels = channels
+          this.ready = true;
+        },
         (error) => {
           if(error.error === 403){
             this.$emit("notify", "warning", "You are not allowed to view and edit those things");

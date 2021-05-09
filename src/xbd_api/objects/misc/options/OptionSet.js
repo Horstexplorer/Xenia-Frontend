@@ -28,7 +28,7 @@ export function getRawOf(options){
     if(options.settings.type === Number){
         let r = 0;
         // eslint-disable-next-line no-unused-vars
-        for(const [name, option] of Object.entries(options.option)){
+        for(const option of Object.values(options.options)){
             if(option.getValue()){
                 r = set(r, option.getOptionDef().getId())
             }
@@ -37,7 +37,7 @@ export function getRawOf(options){
     }else if (options.settings.type === BigInt()){
         let r = BigInt(0);
         // eslint-disable-next-line no-unused-vars
-        for(const [name, option] of Object.entries(options.option)){
+        for(const [name, option] of Object.entries(options.options)){
             if(option.getValue()){
                 r = setBigInt(r, option.getOptionDef().getId())
             }
