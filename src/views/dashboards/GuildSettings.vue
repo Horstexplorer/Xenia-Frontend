@@ -3,9 +3,9 @@
     <div class="dashboard-header">
       <h1>Guild Settings</h1>
     </div>
-    <div class="dashboard-settings">
-      <GeneralGuildSettings v-if="guild != null" :guild="guild"/>
-      <LicenseSettings v-if="license != null" :license="license"/>
+    <div class="dashboard-settings" v-if="this.ready">
+      <GeneralGuildSettings :guild="guild" @notify="addAlert"/>
+      <LicenseSettings :guild="guild" :license="license" @notify="addAlert"/>
     </div>
   </div>
 </template>
@@ -19,10 +19,18 @@ import LicenseSettings from "@/components/settings/guild/LicenseSettings";
 export default {
   name: "GuildSettings",
   components: {LicenseSettings, GeneralGuildSettings},
+
   data(){
     return{
       guild: null,
-      license: null
+      license: null,
+      ready: false
+    }
+  },
+
+  methods: {
+    addAlert(level, message){
+      this.$emit("notify", level, message)
     }
   },
 
@@ -33,6 +41,7 @@ export default {
           API.getGuildLicense(this.$route.params.guildId).then(
               (license) => {
                 this.license = license;
+                this.ready = true;
               },
               (error) => {
                 if(error.error === 403){

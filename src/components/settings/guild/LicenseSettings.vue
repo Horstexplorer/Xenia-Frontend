@@ -79,6 +79,19 @@
                 </div>
               </v-col>
             </v-row>
+            <v-row>
+              <v-col :key="1">
+                <TextInput v-model="license_key" default_content="License key"/>
+              </v-col>
+              <v-col :key="2">
+                <v-btn
+                    elevation="2"
+                    dark
+                    rounded
+                    @click="save"
+                >Update</v-btn>
+              </v-col>
+            </v-row>
           </div>
         </v-col>
       </v-row>
@@ -87,16 +100,53 @@
 </template>
 
 <script>
+import API from "@/xbd_api/xbd_api";
 import License from "@/xbd_api/objects/License";
+import TextInput from "@/components/settings/inputs/TextInput";
+import Guild from "@/xbd_api/objects/Guild";
 
 export default {
   name: "LicenseSettings",
+  components: {TextInput},
 
   props: {
+    guild: {
+      required: true,
+      type: Guild,
+    },
     license: {
       required: true,
       type: License,
     },
+  },
+
+  data() {
+    return {
+      license_key: null,
+    }
+  },
+
+  methods: {
+    save(){
+      API.updateGuildLicense(this.guild, this.license_key).then(
+          () => {
+            this.$emit("notify", "info", "Updated!");
+            setTimeout(function() {
+              location.reload();
+            }, 2000);
+          },
+          (error) => {
+            if(error.error === 403){
+              this.$emit("notify", "warning", "You are not allowed to view and edit those things");
+            }else{
+              this.$emit("notify", "warning", "Failed to update data \"license\" :"+error.error+": "+error.msg);
+            }
+            setTimeout(function() {
+              location.reload();
+            }, 2000);
+          }
+      )
+    }
   },
 }
 </script>
@@ -110,32 +160,32 @@ export default {
   font-family: "Lato", sans-serif;
   padding-left: 1%;
   margin-top: 1%;
-}
-.title {
-  h1{
-    font-size: 32px;
-  }
-}
-.license {
-  .name {
-    color: gray;
-  }
-  .description {
-    font-size: 18px;
-    color: gray;
-  }
-  .until {
-    color: gray;
-  }
-  .perks {
-    font-size: 24px;
-    .name {
-      font-size: 20px;
-      color: white;
+  .title {
+    h1{
+      font-size: 32px;
     }
-    .value {
-      font-size: 20px;
+  }
+  .license {
+    .name {
       color: gray;
+    }
+    .description {
+      font-size: 18px;
+      color: gray;
+    }
+    .until {
+      color: gray;
+    }
+    .perks {
+      font-size: 24px;
+      .name {
+        font-size: 20px;
+        color: white;
+      }
+      .value {
+        font-size: 20px;
+        color: gray;
+      }
     }
   }
 }
