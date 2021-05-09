@@ -183,7 +183,7 @@ export function updateGuild(guild) {
 }
 
 export function updateGuildLicense(guild, licenseKey) {
-    return rawHTTP_PUT("data/guilds/"+guild.getGuildId().toString()+"?licenseKey="+licenseKey, {}).then(
+    return rawHTTP_PUT("data/guilds/"+guild.getGuildId().toString()+"/license?licenseKey="+licenseKey, {}).then(
         (response) => {
             // eslint-disable-next-line no-unused-vars
             return new Promise((successI, errorI) => {
