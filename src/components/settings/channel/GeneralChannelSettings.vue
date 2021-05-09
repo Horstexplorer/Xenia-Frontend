@@ -128,7 +128,7 @@ export default {
 
         API.updateGuildChannel(this.channel).then(
             () => {
-              this.$emit("notify", "info", "Updated!");
+              this.$emit("notify", "info", "Updated! Reloading page...");
               setTimeout(function() {
                 location.reload();
               }, 2000);
