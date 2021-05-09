@@ -135,9 +135,9 @@ export default {
             },
             (error) => {
               if(error.error === 403){
-                this.$emit("notify", "warning", "You are not allowed to view and edit those things");
+                this.$emit("notify", "warning", "You are not allowed to view and edit those things. Reloading page...");
               }else{
-                this.$emit("notify", "warning", "Failed to update data \"channel\" :"+error.error+": "+error.msg);
+                this.$emit("notify", "warning", "Failed to update data \"channel\". Reloading page... :"+error.error+": "+error.msg);
               }
               setTimeout(function() {
                 location.reload();

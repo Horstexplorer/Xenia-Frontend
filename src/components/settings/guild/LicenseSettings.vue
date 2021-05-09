@@ -130,16 +130,16 @@ export default {
     save(){
       API.updateGuildLicense(this.guild, this.license_key).then(
           () => {
-            this.$emit("notify", "info", "Updated!");
+            this.$emit("notify", "info", "Updated! Reloading page...");
             setTimeout(function() {
               location.reload();
             }, 2000);
           },
           (error) => {
             if(error.error === 403){
-              this.$emit("notify", "warning", "You are not allowed to view and edit those things");
+              this.$emit("notify", "warning", "You are not allowed to view and edit those things. Reloading page...");
             }else{
-              this.$emit("notify", "warning", "Failed to update data \"license\" :"+error.error+": "+error.msg);
+              this.$emit("notify", "warning", "Failed to update data \"license\". Reloading page... :"+error.error+": "+error.msg);
             }
             setTimeout(function() {
               location.reload();
