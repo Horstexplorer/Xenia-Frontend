@@ -26,7 +26,8 @@
       <tr>
         <td>
           <div class="innertable">
-            <a>Unknown</a>
+            <a>Users: {{ users }}</a><br/>
+            <a>Guilds: {{ guilds }}</a>
           </div>
         </td>
         <td>
@@ -41,21 +42,41 @@
     <div class="empty"></div>
 
     <div class="description">
-      <h3>Features</h3>
-      <pre>
-        - Chatbot
-        - Reminders
-        - Twitch stream notification
-        - Hastebin upload
-        - Message logging
-      </pre>
+      <MDViewer
+          url="https://raw.githubusercontent.com/Horstexplorer/Xenia/master/README.MD"
+          alternate-origin="https://github.com/Horstexplorer/Xenia"
+          :show-origin=true
+      />
     </div>
   </div>
 </template>
 
 <script>
+import Vue from "vue";
+import httpcore from "@/xbd_api/httpcore";
+import MDViewer from "@/views/misc/MDViewer";
+
 export default {
-  name: "Home"
+  name: "Home",
+  components: {MDViewer},
+  data(){
+    return{
+      users: "unknown",
+      guilds: "unknown",
+    }
+  },
+
+  mounted() {
+    Vue.http.get(httpcore.getFullRequestURL("info/public")).then(
+        response => {
+          if (response.code !== 200){
+            return;
+          }
+          this.users = response.body.users
+          this.guilds = response.body.guilds
+        }
+    )
+  }
 }
 </script>
 
@@ -75,7 +96,7 @@ a:link, a:visited, a:focus, a:hover, a:active {
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/background.jpg");
-  height: 70%;
+  height: 65vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -98,10 +119,12 @@ a:link, a:visited, a:focus, a:hover, a:active {
   border-color: rgba(144, 255, 96, 1);
   color: rgba(144, 255, 96, 1);
 }
+
 .description{
   padding-left: 16px;
   padding-right: 16px;
 }
+
 .description h3{
   text-align: center;
 }
