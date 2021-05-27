@@ -13,6 +13,12 @@
 export default {
   name: "VirtualRoleSettings",
 
+  methods: {
+    addAlert(level, message){
+      this.$emit("notify", level, message)
+    }
+  },
+
   mounted() {
     this.$emit("notify", "info", "Not implemented yet");
     this.$router.push("/dashboard");

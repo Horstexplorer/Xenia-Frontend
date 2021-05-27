@@ -179,7 +179,7 @@ function getOptions() {
 }
 
 export default {
-    AUTH_TOKEN,
+    AUTH_TOKEN, getFullRequestURL,
     login, renew, logout,
     rawHTTP_GET, rawHTTP_PUT, rawHTTP_POST, rawHTTP_DELETE
 }
