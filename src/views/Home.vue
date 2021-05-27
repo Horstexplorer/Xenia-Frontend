@@ -69,7 +69,7 @@ export default {
   mounted() {
     Vue.http.get(httpcore.getFullRequestURL("info/public")).then(
         response => {
-          if (response.code !== 200){
+          if (response.status !== 200){
             return;
           }
           this.users = response.body.users
@@ -121,8 +121,7 @@ a:link, a:visited, a:focus, a:hover, a:active {
 }
 
 .description{
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 48px 16px 32px 16px;
 }
 
 .description h3{
