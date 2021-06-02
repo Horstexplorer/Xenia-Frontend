@@ -59,7 +59,7 @@ export const GuildSettingOptionDefs = {
         DISABLE_COMMAND_AUTO_CORRECT_MESSAGE: new OptionDef(3, "Command Auto-correct Disable Notification", ""),
         COMMAND_AUTO_CORRECT: new OptionDef(2, "Command Auto-correct", ""),
         ENFORCE_LANGUAGE: new OptionDef(1, "Enforce Language", ""),
-        VPERM_ENABLE: new OptionDef(0, "Vperm Enable", "")
+        //VPERM_ENABLE: new OptionDef(0, "Vperm Enable", "")
     }
 }
 
