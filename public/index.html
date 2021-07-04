@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +8,33 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Xenia">
+  <meta name="description"
+        content="A fun bot providing various tools to make your Discord guild even better. Anime? Stream notifications? Reminders? Tags? Logs? Xenia got them all!">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xenia.netbeacon.de/">
+  <meta property="og:title" content="Xenia">
+  <meta property="og:description"
+        content="A fun bot providing various tools to make your Discord guild even better. Anime? Stream notifications? Reminders? Tags? Logs? Xenia got them all!">
+  <meta property="og:image" content="<%= BASE_URL %>preview.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://xenia.netbeacon.de/">
+  <meta property="twitter:title" content="Xenia">
+  <meta property="twitter:description"
+        content="A fun bot providing various tools to make your Discord guild even better. Anime? Stream notifications? Reminders? Tags? Logs? Xenia got them all!">
+  <meta property="twitter:image" content="<%= BASE_URL %>preview.png">
+
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
   </body>
+
 </html>
