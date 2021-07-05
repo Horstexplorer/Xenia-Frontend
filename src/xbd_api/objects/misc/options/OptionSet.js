@@ -56,7 +56,7 @@ export const GuildSettingOptionDefs = {
     },
     definitions: {
         BOT_IGNORE_ADMIN_PERMS: new OptionDef(4, "Bot Ignore Admin Perms", ""),
-        DISABLE_COMMAND_AUTO_CORRECT_MESSAGE: new OptionDef(3, "Command Auto-correct Disable Notification", ""),
+        COMMAND_AUTO_CORRECT_MESSAGE: new OptionDef(3, "Command Auto-correct Notification", ""),
         COMMAND_AUTO_CORRECT: new OptionDef(2, "Command Auto-correct", ""),
         ENFORCE_LANGUAGE: new OptionDef(1, "Enforce Language", ""),
         //VPERM_ENABLE: new OptionDef(0, "Vperm Enable", "")
@@ -69,9 +69,9 @@ export const GuildD43Z1ModeDefs = {
         selectable: Selection.SINGLE
     },
     definitions: {
-        SELF_LEARNING_ONLY: new OptionDef(2, "Self_Learning_Only", ""),
+        SELF_LEARNING: new OptionDef(2, "Self_Learning_Only", ""),
         MIX: new OptionDef(1, "Mix", ""),
-        MASTER_ONLY: new OptionDef(0, "Master Only", "")
+        MASTER: new OptionDef(0, "Master Only", "")
     }
 }
 
@@ -113,7 +113,7 @@ export const ChannelD43Z1SettingsDefs = {
         selectable: Selection.NONE
     },
     definitions: {
-        ACTIVATE_SELF_LEARNING: new OptionDef(1, "Activate Self Learning", ""),
+        ENABLE_SELF_LEARNING: new OptionDef(1, "Activate Self Learning", ""),
         ACTIVE: new OptionDef(0, "Active", "", false)
     }
 }
