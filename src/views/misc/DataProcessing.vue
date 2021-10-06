@@ -10,7 +10,7 @@
       - guild-, channel-, message- and user-ids
       - timestamps of interactions
       - settings and meta data (ids, names, pictures, ...) about the guild, its channels, members (as long as they exist) and users (indefinitely)
-      - encrypted messages up to 60 days (when this feature has been enabled / not been disabled by the guild moderator)
+      - encrypted messages up to 30 days (when this feature has been enabled / not been disabled by the guild moderator)
       - oauth tokens (website)
       <h2>What happens to the data</h2>
       All data collected may not be shared with third parties with the exception where it is applicable by law.
