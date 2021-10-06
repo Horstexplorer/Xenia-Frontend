@@ -2,8 +2,10 @@
   <div class="component-area">
     <pre>
       <h1>Contact</h1>
-      <b>Discord</b>
+      <b>Discord DM</b>
         Horstexplorer#2131
+      <b>Support Guild</b>
+        discord.gg/tQyDg45fCR
     </pre>
   </div>
 </template>
